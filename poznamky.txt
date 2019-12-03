@@ -1,0 +1,4 @@
+NPM INSTALLS:
+- @material-ui/core
+- axios
+- react-redux

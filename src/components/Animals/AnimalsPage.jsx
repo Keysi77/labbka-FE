@@ -8,21 +8,21 @@ export default class AnimalsPage extends Component {
     }
 	componentDidMount = async () => {
 		console.log('MOUNTED');
-		const res = await getReq('api/v0/animals');
+		const res = await getReq('/api/v0/shelters');
 		console.log('MOUNTED', res.data);
-		this.setState({
-			animals: res.data.animals
-		});
+		// this.setState({
+		// 	animals: res.data.animals
+		// });
     };
     
 
 	render() {
-        const { animals } = this.state
+        // const { animals } = this.state
 		return (
 			<div>
-				<Animals
+				{/* <Animals
                     animals={animals}
-                />
+                /> */}
 			</div>
 		);
 	}

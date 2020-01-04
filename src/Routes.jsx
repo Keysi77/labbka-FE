@@ -6,17 +6,18 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // Layout
 
 // Pages
-import AnimalsPage from './components/Animals/AnimalsPage'
+import Home from './pages/home/home.component';
+import Animals from './pages/animals/animals.component';
 
 class Routes extends Component {
 
 	render() {
 		return (
 			<BrowserRouter>
-				<div className="App">
+				<div>
 					<Switch>
-						<Route exact path='/' component={AnimalsPage} />
-						<Route path='/animals' component={AnimalsPage} />
+						<Route exact path='/' component={Home} />
+						<Route path='/animals' component={Animals} />
 					</Switch>
 				</div>
 			</BrowserRouter>

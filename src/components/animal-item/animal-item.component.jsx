@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +13,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -42,23 +40,12 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export function Animals(props) {
+export function AnimalItem(props) {
 	const classes = useStyles();
 
 	console.log('ANIMALS', props);
 
-	// Sposob cez HOOKy
-	// const [ animals, setAnimals ] = useState([]);
-	// useEffect(() => {
-	// 	async function fetchData() {
-	// 		const res = await getReq('api/v0/animals');
-	// 		console.log('res', res);
-	// 	}
-	//   fetchData();
-	//   // [] aby boli data len raz rendernute a nebol infinity loop
-	// }, []);
-
-	Animals = () =>
+	AnimalItem = () =>
 		props.animals &&
 		props.animals.map((animal) => (
 			<Grid key={animal.id} item spacing={3}>
@@ -99,11 +86,11 @@ export function Animals(props) {
 		<Grid container className={classes.root} spacing={2}>
 			<Grid item xs={12}>
 				<Grid container justify="center" spacing={3}>
-					<Animals />
+					<AnimalItem />
 				</Grid>
 			</Grid>
 		</Grid>
 	);
 }
 
-export default Animals;
+export default AnimalItem;

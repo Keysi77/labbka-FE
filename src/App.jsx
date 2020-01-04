@@ -1,15 +1,19 @@
 import React from 'react';
-import './App.css';
+// KOMPONENTY
 import Navbar from './components/Navigation/Navbar';
+//
 import { MuiThemeProvider } from 'material-ui/styles';
-import AnimalsPage from './components/Animals/AnimalsPage';
+
+import './App.css';
+import Animals from './pages/animals/animals.component';
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <MuiThemeProvider>
+        <Animals />
         {/* <Navbar /> */}
-        <AnimalsPage />
+        {/* <AnimalsPage /> */}
       </MuiThemeProvider>
     </div>
   );

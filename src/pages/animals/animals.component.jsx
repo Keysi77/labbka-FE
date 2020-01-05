@@ -7,7 +7,7 @@ import { selectAllAnimals } from '../../redux/animals/animals.selectors';
 
 import AnimalItem from '../../components/animal-item/animal-item.component';
 
-class Animals extends Component {
+class AnimalsPage extends Component {
 	componentDidMount = async () => {
 		const { fetchAnimals } = this.props;
 		fetchAnimals();
@@ -30,4 +30,4 @@ const mapStateToProps = createStructuredSelector({
 	animals: selectAllAnimals
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Animals);
+export default connect(mapStateToProps, mapDispatchToProps)(AnimalsPage);

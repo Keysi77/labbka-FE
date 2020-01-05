@@ -5,12 +5,12 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 import rootReducer from './root-reducer';
-// bude cachovat store
-// import { persistStore } from 'redux-persist';
+// bude cachovat store do localstorage
+import { persistStore } from 'redux-persist';
 
 const middlewares = [ logger, thunk ];
 
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
 
-export default store;
+export default { store, persistor };

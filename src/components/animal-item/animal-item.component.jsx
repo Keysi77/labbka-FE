@@ -42,12 +42,11 @@ const useStyles = makeStyles((theme) => ({
 
 export function AnimalItem(props) {
 	const classes = useStyles();
-
-	console.log('ANIMALS', props);
+	const { animals: { animals } } = props
 
 	AnimalItem = () =>
-		props.animals &&
-		props.animals.map((animal) => (
+		animals ?
+		animals.map((animal) => (
 			<Grid key={animal.id} item spacing={3}>
 				<Card className={classes.card}>
 					<CardHeader
@@ -80,7 +79,7 @@ export function AnimalItem(props) {
 					</CardActions>
 				</Card>
 			</Grid>
-		));
+		)): (<p> NO DATA </p>);
 
 	return (
 		<Grid container className={classes.root} spacing={2}>

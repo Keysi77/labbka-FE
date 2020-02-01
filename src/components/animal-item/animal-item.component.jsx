@@ -1,18 +1,20 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import { makeStyles } from '@material-ui/core/styles';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Grid from '@material-ui/core/Grid';
+import React from 'react'
+import Card from '@material-ui/core/Card'
+import CardHeader from '@material-ui/core/CardHeader'
+import { makeStyles } from '@material-ui/core/styles'
+import CardMedia from '@material-ui/core/CardMedia'
+import CardContent from '@material-ui/core/CardContent'
+import CardActions from '@material-ui/core/CardActions'
+import Avatar from '@material-ui/core/Avatar'
+import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
+import { red } from '@material-ui/core/colors'
+import FavoriteIcon from '@material-ui/icons/Favorite'
+import ShareIcon from '@material-ui/icons/Share'
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import Grid from '@material-ui/core/Grid'
+import { getReq } from '../../utils/request'
+import { API_PATHS } from '../../enums/apiPaths'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -38,16 +40,25 @@ const useStyles = makeStyles((theme) => ({
 	avatar: {
 		backgroundColor: red[500]
 	}
-}));
+}))
 
 export function AnimalItem(props) {
-	const classes = useStyles();
-	const { animals: { animals } } = props
+	const classes = useStyles()
+	const { animals } = props
+
+	const handleGetAnimal = async (id) => {
+		try {
+			const { data } = await getReq(API_PATHS.GET_ONE_ANIMAL(id))
+			return data
+		} catch (e) {
+			return Promise.reject(e)
+		}
+	}
 
 	AnimalItem = () =>
 		animals ?
 		animals.map((animal) => (
-			<Grid key={animal.id} item spacing={3}>
+			<Grid key={animal.id} item spacing={2}>
 				<Card className={classes.card}>
 					<CardHeader
 						avatar={
@@ -77,9 +88,10 @@ export function AnimalItem(props) {
 							<ShareIcon />
 						</IconButton>
 					</CardActions>
+					<button onClick={() => handleGetAnimal(animal.id)}>GET THIS ANIMAL</button>
 				</Card>
 			</Grid>
-		)): (<p> NO DATA </p>);
+		)): (<p> NO DATA </p>)
 
 	return (
 		<Grid container className={classes.root} spacing={2}>
@@ -89,7 +101,7 @@ export function AnimalItem(props) {
 				</Grid>
 			</Grid>
 		</Grid>
-	);
+	)
 }
 
-export default AnimalItem;
+export default AnimalItem

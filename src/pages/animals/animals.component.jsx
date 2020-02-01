@@ -6,17 +6,15 @@ import { fetchAnimals } from '../../redux/animals/animals.actions';
 import { selectAllAnimals } from '../../redux/animals/animals.selectors';
 
 import AnimalItem from '../../components/animal-item/animal-item.component';
-
+import './animals.styles.scss'
 class AnimalsPage extends Component {
 	componentDidMount = async () => {
 		const { fetchAnimals } = this.props;
 		fetchAnimals();
 	};
-
 	render() {
 		return (
-			<div>
-				Animal component PAGE
+			<div className="animal-wrapper">
 				<AnimalItem animals={this.props.animals} />
 			</div>
 		);

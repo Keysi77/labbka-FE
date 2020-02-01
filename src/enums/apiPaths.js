@@ -1,6 +1,14 @@
+const version = 'v0'
 export const API_PATHS = {
-    // Shelters
-    GET_SHELTERS: '/api/v0/shelters',
-    // Animals
-    GET_ANIMALS: '/api/v0/animals'
+    // ! Shelters
+    GET_SHELTERS: `/api/${version}/shelters`,
+
+    // ! Animals for adoptions
+    ADD_ANIMAL: `/api/${version}/animals`,
+    UPDATE_ANIMAL: (id) => `/api/${version}/animals/${id}`,
+    GET_ANIMALS: `/api/${version}/animals`,
+    GET_ONE_ANIMAL: (id) => `/api/${version}/animals/${id}`,
+    DELETE_ANIMAL: (id) => `/api/${version}/animals/${id}`,
+    MARK_ANIMAL_ADOPTED: (id) => `/api/${version}/animals/${id}/markAdoped`,
+    MARK_ANIMAL_RETURNED: (id) => `/api/${version}/animals/${id}/markReturned`,
 }

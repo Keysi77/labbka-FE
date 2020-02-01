@@ -5,5 +5,5 @@ export const selectAnimals = state => state.animals
 
 export const selectAllAnimals = createSelector(
     [selectAnimals],
-    (animals) => animals.animals
+    (animals) => animals.animals.animals
 )

@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
 import Avatar from '@material-ui/core/Avatar'
 import IconButton from '@material-ui/core/IconButton'
+import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { red } from '@material-ui/core/colors'
 import FavoriteIcon from '@material-ui/icons/Favorite'
@@ -15,6 +16,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Grid from '@material-ui/core/Grid'
 import { getReq } from '../../utils/request'
 import { API_PATHS } from '../../enums/apiPaths'
+import { ThemeProvider } from '@material-ui/core/styles'
+import './animal-item.styles.sass'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -49,6 +52,7 @@ export function AnimalItem(props) {
 	const handleGetAnimal = async (id) => {
 		try {
 			const { data } = await getReq(API_PATHS.GET_ONE_ANIMAL(id))
+			console.log('one animal', data)
 			return data
 		} catch (e) {
 			return Promise.reject(e)
@@ -58,39 +62,42 @@ export function AnimalItem(props) {
 	AnimalItem = () =>
 		animals ?
 		animals.map((animal) => (
-			<Grid key={animal.id} item spacing={2}>
-				<Card className={classes.card}>
-					<CardHeader
-						avatar={
-							<Avatar aria-label="recipe" className={classes.avatar}>
-								PF
-							</Avatar>
-						}
-						action={
-							<IconButton aria-label="settings">
-								<MoreVertIcon />
+				<Grid key={animal.id} item spacing={2}>
+					<Card className={classes.card}>
+						<CardHeader
+							avatar={
+								<Avatar aria-label="recipe" className={classes.avatar}>
+									PF
+								</Avatar>
+							}
+							action={
+								<IconButton aria-label="settings">
+									<MoreVertIcon />
+								</IconButton>
+							}
+							title={animal.name}
+							subheader={animal.userRef.name}
+						/>
+						<CardMedia className={classes.media} image={animal.gallery[0]} title="Paella dish" />
+						<CardContent>
+							<Typography variant="body2" color="textSecondary" component="p">
+								{ animal.desc && animal.desc.length > 150 ? animal.desc.slice(0, 150) + '...' : animal.desc ? animal.desc : <div className="no-content">Ziadny popis</div> }
+							</Typography>
+						</CardContent>
+						<CardActions disableSpacing>
+							<IconButton aria-label="add to favorites">
+								<FavoriteIcon />
 							</IconButton>
-						}
-						title={animal.name}
-						subheader={animal.userRef.name}
-					/>
-					<CardMedia className={classes.media} image={animal.gallery[0]} title="Paella dish" />
-					<CardContent>
-						<Typography variant="body2" color="textSecondary" component="p">
-							{animal.desc}
-						</Typography>
-					</CardContent>
-					<CardActions disableSpacing>
-						<IconButton aria-label="add to favorites">
-							<FavoriteIcon />
-						</IconButton>
-						<IconButton aria-label="share">
-							<ShareIcon />
-						</IconButton>
-					</CardActions>
-					<button onClick={() => handleGetAnimal(animal.id)}>GET THIS ANIMAL</button>
-				</Card>
-			</Grid>
+							<IconButton aria-label="share">
+								<ShareIcon />
+							</IconButton>
+						</CardActions>
+							<Button variant="contained" color="primary" className={classes.margin} onClick={() => handleGetAnimal(animal.id) }>
+								Adoptovat
+							</Button>
+						{/* <button onClick={() => handleGetAnimal(animal.id)}>GET THIS ANIMAL</button> */}
+					</Card>
+				</Grid>
 		)): (<p> NO DATA </p>)
 
 	return (

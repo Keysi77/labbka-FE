@@ -1,30 +1,22 @@
 import React from 'react'
-// KOMPONENTY
-import Navbar from './components/Navigation/Navbar'
-//
-import { MuiThemeProvider } from 'material-ui/styles'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { history } from './utils/history'
-
-import './App.css'
-
-import Home from './pages/home/home.component'
-import AnimalsPage from './pages/animals/animals.component'
-import SideMenu from './pages/menu/side-menu.component'
-import OwnMenu from './pages/menu/own-menu.component'
-import Routes from './routes/Routes'
+// Router
+import { BrowserRouter } from 'react-router-dom'
 import { Router } from 'react-router'
-import Header from './pages/menu/header.component'
+import Routes from './routes/Routes'
+import { history } from './utils/history'
+// Material Provider
+import { MuiThemeProvider } from 'material-ui/styles'
+// Styly
+import './App.sass'
+// Komponenty
+import LandingPage from './pages/landing-page/landing-page.component'
 
 function App() {
 	return (
     <MuiThemeProvider>
       <BrowserRouter>
         <div className="wrapper">
-          {/* <Header /> */}
-          {/* <Navbar /> */}
-          <SideMenu className="side-bar-menu" />
-          {/* <OwnMenu /> */}
+          {/* <LandingPage /> */}
           <Router history={history}>
 						<Routes/>
 					</Router>

@@ -16,3 +16,5 @@ export const getReq = async(url, params, customConfig = {} ) => {
 		console.log(e)
 	}
 }
+
+// TODO: ostatne na POST, DELETE a UPDATE

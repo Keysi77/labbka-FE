@@ -1,5 +1,7 @@
 import React from "react"
+import { Link, NavLink } from 'react-router-dom'
 import clsx from "clsx"
+// Material
 import { makeStyles, useTheme } from "@material-ui/core/styles"
 import Drawer from "@material-ui/core/Drawer"
 import AppBar from "@material-ui/core/AppBar"
@@ -14,8 +16,6 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import InboxIcon from "@material-ui/icons/MoveToInbox"
-import { Link, NavLink } from 'react-router-dom'
-
 
 import './side-menu.styles.sass'
 
@@ -170,7 +170,7 @@ export default function SideMenu() {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <NavLink to="/shelters">Príbehy</NavLink>
+            <NavLink to="/pribehy">Príbehy</NavLink>
             <ListItemText />
           </ListItem>
 
@@ -178,15 +178,7 @@ export default function SideMenu() {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <NavLink to="/shelters">Stratené zvieratka</NavLink>
-            <ListItemText />
-          </ListItem>
-
-          <ListItem button >
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <NavLink to="/shelters">Útulkz</NavLink>
+            <NavLink to="/utulky">Útulky</NavLink>
             <ListItemText />
           </ListItem>
         </List>

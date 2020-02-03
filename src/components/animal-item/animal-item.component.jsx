@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+// Material
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import { makeStyles } from '@material-ui/core/styles'
@@ -14,9 +16,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import ShareIcon from '@material-ui/icons/Share'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Grid from '@material-ui/core/Grid'
+// Request
 import { getReq } from '../../utils/request'
 import { API_PATHS } from '../../enums/apiPaths'
-import { ThemeProvider } from '@material-ui/core/styles'
+
 import './animal-item.styles.sass'
 
 const useStyles = makeStyles((theme) => ({
@@ -46,22 +49,25 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export function AnimalItem(props) {
+	AnimalItem.propTypes = {
+		animals: PropTypes.arrayOf(PropTypes.object).isRequired,
+	}
+
 	const classes = useStyles()
 	const { animals } = props
 
 	const handleGetAnimal = async (id) => {
 		try {
 			const { data } = await getReq(API_PATHS.GET_ONE_ANIMAL(id))
-			console.log('one animal', data)
 			return data
 		} catch (e) {
 			return Promise.reject(e)
 		}
 	}
 
-	AnimalItem = () =>
+	const AnimalItems = () => (
 		animals ?
-		animals.map((animal) => (
+			animals.map((animal) => (
 				<Grid key={animal.id} item spacing={2}>
 					<Card className={classes.card}>
 						<CardHeader
@@ -81,7 +87,7 @@ export function AnimalItem(props) {
 						<CardMedia className={classes.media} image={animal.gallery[0]} title="Paella dish" />
 						<CardContent>
 							<Typography variant="body2" color="textSecondary" component="p">
-								{ animal.desc && animal.desc.length > 150 ? animal.desc.slice(0, 150) + '...' : animal.desc ? animal.desc : <div className="no-content">Ziadny popis</div> }
+								{animal.desc && animal.desc.length > 150 ? animal.desc.slice(0, 150) + '...' : animal.desc ? animal.desc : <div className="no-content">Ziadny popis</div>}
 							</Typography>
 						</CardContent>
 						<CardActions disableSpacing>
@@ -92,19 +98,19 @@ export function AnimalItem(props) {
 								<ShareIcon />
 							</IconButton>
 						</CardActions>
-							<Button variant="contained" color="primary" className={classes.margin} onClick={() => handleGetAnimal(animal.id) }>
-								Adoptovat
+						<Button variant="contained" color="primary" className={classes.margin} onClick={() => handleGetAnimal(animal.id)}>
+							Adoptovat
 							</Button>
-						{/* <button onClick={() => handleGetAnimal(animal.id)}>GET THIS ANIMAL</button> */}
 					</Card>
 				</Grid>
-		)): (<p> NO DATA </p>)
+			)) : (<p> NO DATA </p>)
+	)
 
 	return (
 		<Grid container className={classes.root} spacing={2}>
 			<Grid item xs={12}>
 				<Grid container justify="center" spacing={3}>
-					<AnimalItem />
+					<AnimalItems />
 				</Grid>
 			</Grid>
 		</Grid>

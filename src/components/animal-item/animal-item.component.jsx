@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 // Material
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
@@ -21,6 +23,8 @@ import { getReq } from '../../utils/request'
 import { API_PATHS } from '../../enums/apiPaths'
 
 import './animal-item.styles.sass'
+
+import { fetchOneAnimal } from '../../redux/animals/animals.actions'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -51,18 +55,15 @@ const useStyles = makeStyles((theme) => ({
 export function AnimalItem(props) {
 	AnimalItem.propTypes = {
 		animals: PropTypes.arrayOf(PropTypes.object).isRequired,
+		fetchOneAnimal: PropTypes.shape()
 	}
 
 	const classes = useStyles()
 	const { animals } = props
 
-	const handleGetAnimal = async (id) => {
-		try {
-			const { data } = await getReq(API_PATHS.GET_ONE_ANIMAL(id))
-			return data
-		} catch (e) {
-			return Promise.reject(e)
-		}
+	const handleClick = (id) => {
+		const { fetchOneAnimal } = props
+		fetchOneAnimal(id)
 	}
 
 	const AnimalItems = () => (
@@ -98,12 +99,18 @@ export function AnimalItem(props) {
 								<ShareIcon />
 							</IconButton>
 						</CardActions>
-						<Button variant="contained" color="primary" className={classes.margin} onClick={() => handleGetAnimal(animal.id)}>
-							Adoptovat
+						<Link to={'/detail-zvieratka/' + animal.id}>
+							<Button variant="contained" color="primary" className={classes.margin} onClick={() => handleClick(animal.id)}>
+								Adoptovat
 							</Button>
+						</Link>
 					</Card>
 				</Grid>
-			)) : (<p> NO DATA </p>)
+			)) : (
+				<div>
+					NO DATA
+				</div>
+			)
 	)
 
 	return (
@@ -117,4 +124,8 @@ export function AnimalItem(props) {
 	)
 }
 
-export default AnimalItem
+const mapDispatchToProps = (dispatch) => ({
+	fetchOneAnimal: (id) => dispatch(fetchOneAnimal(id))
+})
+
+export default connect(null, mapDispatchToProps)(AnimalItem)

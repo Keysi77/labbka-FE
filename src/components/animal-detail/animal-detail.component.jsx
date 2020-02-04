@@ -1,17 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { createStructuredSelector } from 'reselect'
+import { selectOneAnimal } from '../../redux/animals/animals.selectors'
 
-function AnimalDetail(props) {
+function AnimalDetail({ animal }) {
     AnimalDetail.propTypes = {
     
     }
-    console.log('pros z animal detail', props)
     return (
         <div>
-            ANIMAL DETAIL KOMPONENT
+            { animal.name }
         </div>
     )
 }
 
-export default AnimalDetail
+const mapStateToProps = createStructuredSelector({
+	animal: selectOneAnimal
+})
+export default connect(mapStateToProps, null)(AnimalDetail)
 

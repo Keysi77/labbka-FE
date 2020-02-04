@@ -14,6 +14,20 @@ export const fetchAnimals = () => {
 		}
 	}
 }
+export const fetchOneAnimal = (id) => {
+	console.log('id z akcie', id)
+	return async (dispatch) => {
+		try {
+			dispatch({ type: ANIMALS_ACTION_TYPES.FETCH_ONE_ANIMAL_START })
+			const { data } = await getReq(API_PATHS.GET_ONE_ANIMAL(id))
+			console.log('data z fetchone animal', data)
+			dispatch({ type: ANIMALS_ACTION_TYPES.FETCH_ONE_ANIMAL_SUCCESS, payload: data })
+			return data
+		} catch (error) {
+			dispatch({ type: ANIMALS_ACTION_TYPES.FETCH_ANIMALS_FAILURE, payload: error })
+		}
+	}
+}
 
 // ked bude mazanie/update a posielat sa ID
 

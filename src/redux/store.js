@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware } from 'redux'
 // logger pre debugovanie middlewaru
 import logger from 'redux-logger'
-// redux-thunk = odpaluje funkcie v akciach
+// redux-thunk = spusta funkcie v akciach
 import thunk from 'redux-thunk'
-
+// zlucuje vsetky reducere do jedneho
 import rootReducer from './root-reducer'
 // bude cachovat store do localstorage
 import { persistStore } from 'redux-persist'

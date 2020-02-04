@@ -12,9 +12,8 @@ import './animals.styles.sass'
 
 class AnimalsPage extends Component {
 	static propTypes = {
-		prop: PropTypes,
 		animals: PropTypes.array,
-		fetchAnimals: PropTypes.shape()
+		fetchAnimals: PropTypes.func
 	}
 
 	componentDidMount = async () => {

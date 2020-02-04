@@ -1,6 +1,5 @@
 import  { createSelector } from 'reselect'
 
-// vyselektuje len usera zo state
 export const selectAnimals = state => state.animals
 export const selectOne = state => state.animals.animal
 
@@ -12,4 +11,9 @@ export const selectAllAnimals = createSelector(
 export const selectOneAnimal = createSelector(
     [selectOne],
     (animal) => animal
+)
+
+export const selectIsAnimalFetching = createSelector(
+    [selectAnimals],
+    animals => animals.isFetching
 )

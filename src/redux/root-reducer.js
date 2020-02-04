@@ -1,7 +1,9 @@
+// Redux
 import { combineReducers } from 'redux'
-import sheltersReducer from './shelters/shelters.reducer'
 import storageLocal from 'redux-persist/lib/storage'
 import { persistReducer } from 'redux-persist'
+// Reducers
+import sheltersReducer from './shelters/shelters.reducer'
 import animalsReducer from './animals/animals.reducer'
 
 const persistConfig = {
@@ -10,7 +12,8 @@ const persistConfig = {
 	whitelist: [
 		// vsetky reducere ktore chcem ulozit do localstorage
 		// vacsinou tie ktore sa neukladaju do DB
-		'shelters'
+		
+		// 'nazovReduceruPreLocalStorage'
 	]
 }
 

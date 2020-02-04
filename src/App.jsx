@@ -9,7 +9,7 @@ import { MuiThemeProvider } from 'material-ui/styles'
 // Styly
 import './App.sass'
 // Komponenty
-import LandingPage from './pages/landing-page/landing-page.component'
+// import LandingPage from './pages/landing-page/landing-page.component'
 
 function App() {
 	return (

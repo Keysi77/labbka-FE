@@ -6,7 +6,9 @@ export const fetchAnimals = () => {
 	return async (dispatch) => {
 		try {
 			dispatch({ type: ANIMALS_ACTION_TYPES.FETCH_ANIMALS_START })
+			// id ?
 			const { data } = await getReq(API_PATHS.GET_ANIMALS, { limit: 0 })
+			// : 
 			dispatch({ type: ANIMALS_ACTION_TYPES.FETCH_ANIMALS_SUCCESS, payload: data })
 			return data
 		} catch (error) {
@@ -14,13 +16,12 @@ export const fetchAnimals = () => {
 		}
 	}
 }
+
 export const fetchOneAnimal = (id) => {
-	console.log('id z akcie', id)
 	return async (dispatch) => {
 		try {
 			dispatch({ type: ANIMALS_ACTION_TYPES.FETCH_ONE_ANIMAL_START })
 			const { data } = await getReq(API_PATHS.GET_ONE_ANIMAL(id))
-			console.log('data z fetchone animal', data)
 			dispatch({ type: ANIMALS_ACTION_TYPES.FETCH_ONE_ANIMAL_SUCCESS, payload: data })
 			return data
 		} catch (error) {

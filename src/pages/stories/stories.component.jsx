@@ -1,7 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
-function Stories(props) {
+function Stories() {
     return (
         <div>
             STORIES
@@ -9,9 +9,9 @@ function Stories(props) {
     )
 }
 
-Stories.propTypes = {
+// Stories.propTypes = {
 
-}
+// }
 
 export default Stories
 

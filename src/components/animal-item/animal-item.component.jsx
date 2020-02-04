@@ -18,13 +18,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 import ShareIcon from '@material-ui/icons/Share'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import Grid from '@material-ui/core/Grid'
-// Request
-import { getReq } from '../../utils/request'
-import { API_PATHS } from '../../enums/apiPaths'
+// Akcia
+import { fetchOneAnimal } from '../../redux/animals/animals.actions'
 
 import './animal-item.styles.sass'
-
-import { fetchOneAnimal } from '../../redux/animals/animals.actions'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -55,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 export function AnimalItem(props) {
 	AnimalItem.propTypes = {
 		animals: PropTypes.arrayOf(PropTypes.object).isRequired,
-		fetchOneAnimal: PropTypes.shape()
+		fetchOneAnimal: PropTypes.func
 	}
 
 	const classes = useStyles()
@@ -69,7 +66,7 @@ export function AnimalItem(props) {
 	const AnimalItems = () => (
 		animals ?
 			animals.map((animal) => (
-				<Grid key={animal.id} item spacing={2}>
+				<Grid key={animal.id} item>
 					<Card className={classes.card}>
 						<CardHeader
 							avatar={
@@ -88,7 +85,7 @@ export function AnimalItem(props) {
 						<CardMedia className={classes.media} image={animal.gallery[0]} title="Paella dish" />
 						<CardContent>
 							<Typography variant="body2" color="textSecondary" component="p">
-								{animal.desc && animal.desc.length > 150 ? animal.desc.slice(0, 150) + '...' : animal.desc ? animal.desc : <div className="no-content">Ziadny popis</div>}
+								{animal.desc && animal.desc.length > 150 ? animal.desc.slice(0, 150) + '...' : animal.desc ? animal.desc : <span className="no-content">Ziadny popis</span>}
 							</Typography>
 						</CardContent>
 						<CardActions disableSpacing>
@@ -114,7 +111,7 @@ export function AnimalItem(props) {
 	)
 
 	return (
-		<Grid container className={classes.root} spacing={2}>
+		<Grid container className={classes.root}>
 			<Grid item xs={12}>
 				<Grid container justify="center" spacing={3}>
 					<AnimalItems />

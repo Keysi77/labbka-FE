@@ -155,7 +155,7 @@ export default function SideMenu() {
               <InboxIcon />
             </ListItemIcon>
             <Link to="/">Home</Link>
-            <ListItemText primary />
+            <ListItemText />
           </ListItem>
 
           <ListItem button >

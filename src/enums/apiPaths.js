@@ -11,4 +11,8 @@ export const API_PATHS = {
 
     // ! Shelters
     GET_SHELTERS: `/api/${version}/shelters`,
+
+    // ! Login paths
+    LOGIN_USER_FACEBOOK: `/api/${version}/users/loginFacebook`,
+    LOGIN_USER_GOOGLE: `/api/${version}/users/loginGoogle`
 }

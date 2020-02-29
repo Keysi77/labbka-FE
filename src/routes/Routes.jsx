@@ -10,6 +10,8 @@ import Shelters from '../pages/shelters/shelters.component'
 import AnimalDetail from '../components/animal-detail/animal-detail.component'
 import Home from '../pages/home/home.component'
 import Stories from '../pages/stories/stories.component'
+import SignInSide from '../pages/sign-in/sing-in.page'
+import CustomerLayout from '../layouts/CustomerLayout'
 
 class Routes extends React.Component {
 	render = () => {
@@ -43,6 +45,12 @@ class Routes extends React.Component {
 						layout={ Layout }
 					/>
 
+					<PublicRoute
+						exact
+						path={'/prihlasenie'}
+						component={SignInSide}
+						layout={CustomerLayout}
+					/>
 					<PublicRoute
 						component={ NotFoundPage }
 						layout={ Layout }

@@ -5,6 +5,7 @@ import { persistReducer } from 'redux-persist'
 // Reducers
 import sheltersReducer from './shelters/shelters.reducer'
 import animalsReducer from './animals/animals.reducer'
+import usersReducer from './users/users.reducer'
 
 const persistConfig = {
 	key: 'root',
@@ -14,12 +15,14 @@ const persistConfig = {
 		// vacsinou tie ktore sa neukladaju do DB
 		
 		// 'nazovReduceruPreLocalStorage'
+		usersReducer
 	]
 }
 
 const rootReducer = combineReducers({
 	shelters: sheltersReducer,
-	animals: animalsReducer
+	animals: animalsReducer,
+	users: usersReducer
 })
 
 export default persistReducer(persistConfig, rootReducer)

@@ -7,6 +7,7 @@ import { history } from "./utils/history";
 // Material Provider
 import { MuiThemeProvider } from "material-ui/styles";
 // Styly
+import "antd/dist/antd.css";
 import "./App.sass";
 
 function App() {

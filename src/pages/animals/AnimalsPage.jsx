@@ -6,10 +6,9 @@ import { createStructuredSelector } from "reselect";
 import { fetchAnimals } from "../../redux/animals/animals.actions";
 import { selectAllAnimals } from "../../redux/animals/animals.selectors";
 // Components
-import AnimalItem from "../../components/animal-item/animal-item.component";
-// Styles
-import "./animals.styles.sass";
+import AnimalItem from "../../components/animal-item/AnimalItem";
 
+// TODO: prerobit na funcional
 class AnimalsPage extends Component {
 	static propTypes = {
 		animals: PropTypes.array,
@@ -21,11 +20,7 @@ class AnimalsPage extends Component {
 		fetchAnimals();
 	};
 	render() {
-		return (
-			<div className="animal-wrapper">
-				<AnimalItem animals={this.props.animals} />
-			</div>
-		);
+		return <AnimalItem animals={this.props.animals} />;
 	}
 }
 const mapDispatchToProps = dispatch => ({

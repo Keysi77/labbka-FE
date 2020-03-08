@@ -4,7 +4,7 @@ import { loginUser } from "../../redux/auth/auth.actions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import "./sign-in.styles.sass";
+import "./SignInPage.sass";
 
 function Google({ loginUser }) {
 	Google.propTypes = {

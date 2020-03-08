@@ -4,7 +4,7 @@ import { loginUser } from "../../redux/auth/auth.actions";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import PropTypes from "prop-types";
 
-import "./sign-in.styles.sass";
+import "./SignInPage.sass";
 
 function Facebook({ loginUser }) {
 	Facebook.propTypes = {

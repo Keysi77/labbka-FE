@@ -1,15 +1,12 @@
-import React from 'react'
-import SideMenu from '../pages/menu/side-menu.component'
-
-import './layout.styles.sass'
+import React from "react";
+import SideMenu2 from "../pages/menu/SideMenu";
 
 function Layout({ children }) {
 	return (
-		<div  className="layout-wrapper">
-			<SideMenu className="side-bar-menu" />
-			<div>{children}</div>
+		<div className="layout-wrapper">
+			<SideMenu2>{children}</SideMenu2>
 		</div>
-	)
+	);
 }
 
-export default Layout
+export default Layout;

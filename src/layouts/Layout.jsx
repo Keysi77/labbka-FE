@@ -1,10 +1,10 @@
 import React from "react";
-import SideMenu2 from "../pages/menu/SideMenu";
+import SiteMenu from "../pages/menu/SiteMenu";
 
 function Layout({ children }) {
 	return (
 		<div className="layout-wrapper">
-			<SideMenu2>{children}</SideMenu2>
+			<SiteMenu>{children}</SiteMenu>
 		</div>
 	);
 }

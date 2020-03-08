@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 // Redux
 import { connect } from "react-redux";
@@ -8,21 +8,18 @@ import { selectAllAnimals } from "../../redux/animals/animals.selectors";
 // Components
 import AnimalItem from "../../components/animal-item/AnimalItem";
 
-// TODO: prerobit na funcional
-class AnimalsPage extends Component {
-	static propTypes = {
+const AnimalsPage = props => {
+	AnimalsPage.propTypes = {
 		animals: PropTypes.array,
 		fetchAnimals: PropTypes.func
 	};
-
-	componentDidMount = async () => {
-		const { fetchAnimals } = this.props;
+	useEffect(() => {
+		const { fetchAnimals } = props;
 		fetchAnimals();
-	};
-	render() {
-		return <AnimalItem animals={this.props.animals} />;
-	}
-}
+	}, []);
+
+	return <AnimalItem animals={props.animals} />;
+};
 const mapDispatchToProps = dispatch => ({
 	fetchAnimals: () => dispatch(fetchAnimals())
 });

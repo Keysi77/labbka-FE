@@ -9,11 +9,12 @@ import {
 	VideoCameraOutlined
 } from "@ant-design/icons";
 
-import "./SideMenu.sass";
+import "./SiteMenu.sass";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-export default function SideMenu({ children }) {
+export default function SiteMenu({ children }) {
+	console.log("chikldren", children);
 	return (
 		<Layout>
 			<Sider
@@ -27,7 +28,7 @@ export default function SideMenu({ children }) {
 				}}
 			>
 				<div className="logo" />
-				<Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
+				<Menu theme="dark" mode="inline">
 					<Menu.Item key="1">
 						<UserOutlined />
 						<NavLink to="/">Domov</NavLink>
@@ -61,7 +62,7 @@ export default function SideMenu({ children }) {
 					}}
 				>
 					<div
-						className="site-layout-background"
+						className="site-layout-background content"
 						style={{ padding: 24, textAlign: "center" }}
 					>
 						{children}

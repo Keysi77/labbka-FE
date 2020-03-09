@@ -1,20 +1,19 @@
 import React from "react";
-import { compose } from "redux";
-import { withTranslation } from "react-i18next";
 import * as PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
-const SheltersPage = props => {
+const SheltersPage = () => {
 	SheltersPage.propTypes = {
 		t: PropTypes.func.isRequired
 	};
 
-	const { t } = props;
+	const { t } = useTranslation();
 
 	return (
 		<div className="shelters-wrapper">
-			<p>{t("paths:adopcia")}</p>
+			<p>{t("translation:Utulky")}</p>
 		</div>
 	);
 };
 
-export default compose(withTranslation())(SheltersPage);
+export default SheltersPage;

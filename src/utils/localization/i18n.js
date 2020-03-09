@@ -3,12 +3,14 @@ import Backend from "i18next-chained-backend";
 import LocalStorageBackend from "i18next-localstorage-backend";
 import XHR from "i18next-xhr-backend";
 import { initReactI18next } from "react-i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 
 import { DEFAULT_LOCALE, NAMESPACE } from "./localeNamespaces";
 
 i18n
 	.use(Backend)
 	.use(initReactI18next)
+	.use(LanguageDetector)
 	.init({
 		backend: {
 			backendOptions: [

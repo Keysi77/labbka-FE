@@ -1,23 +1,24 @@
-import { USER_ACTIONS } from './users.types'
+import { USER_ACTIONS } from "./users.types";
 
 const INIT_STATE = {
 	users: [],
+	loggedUser: null,
 	isFetching: false,
 	errorMessage: undefined
-}
+};
 
 const usersReducer = (state = INIT_STATE, action) => {
 	switch (action.type) {
-		// case USERS_ACTION_TYPES.SET_TOKEN_LOCALSTORAGE:
-		// 	return {
-		// 		...state,
-		// 		isFetching: true
-        // 	}
-        case USER_ACTIONS.USER_LOGIN:
-        case USER_ACTIONS.USER_LOGOUT:
+		case USER_ACTIONS.USER_LOGIN:
+			return {
+				...state,
+				isFetching: false,
+				loggedUser: action.payload
+			};
+		case USER_ACTIONS.USER_LOGOUT:
 		default:
-			return state
+			return state;
 	}
-}
+};
 
-export default usersReducer
+export default usersReducer;

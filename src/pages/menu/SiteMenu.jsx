@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-
-import { Layout, Menu, Avatar } from "antd";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { createStructuredSelector } from "reselect";
+import { Layout, Menu, Avatar, Button } from "antd";
 import {
 	BarChartOutlined,
 	UserOutlined,
@@ -10,11 +12,23 @@ import {
 } from "@ant-design/icons";
 
 import "./SiteMenu.sass";
+import { logoutUser } from "../../redux/auth/auth.actions";
+import { selectLoggedUser } from "../../redux/auth/auth.selectors";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-export default function SiteMenu({ children }) {
-	console.log("chikldren", children);
+const SiteMenu = ({ children, logoutUser, loggedUser }) => {
+	SiteMenu.propTypes = {
+		logoutUser: PropTypes.func,
+		loggedUser: PropTypes.object
+	};
+
+	const handleLogOutUser = () => {
+		logoutUser();
+	};
+
+	// TODO: loggedUser po refreshi zmiznu data zo storu
+
 	return (
 		<Layout>
 			<Sider
@@ -51,7 +65,10 @@ export default function SiteMenu({ children }) {
 				<Header className="site-layout-background" style={{ padding: 0 }}>
 					<div className="page-name">Nazov page</div>
 					<div className="user-info">
-						Meno Priezvisko Odhlasit
+						<div className="user-name">
+							{loggedUser ? loggedUser.name : "Neprihlaseny"}
+						</div>
+						<Button onClick={() => handleLogOutUser()}>Odhlasit</Button>
 						<Avatar size={32} icon={<UserOutlined />} />
 					</div>
 				</Header>
@@ -72,4 +89,14 @@ export default function SiteMenu({ children }) {
 			</Layout>
 		</Layout>
 	);
-}
+};
+
+const mapStateToProps = createStructuredSelector({
+	loggedUser: selectLoggedUser
+});
+
+const mapDispatchToProps = dispatch => ({
+	logoutUser: () => dispatch(logoutUser())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SiteMenu);

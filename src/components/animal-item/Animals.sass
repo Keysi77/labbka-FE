@@ -1,0 +1,53 @@
+.animals-wrapper
+	display: flex
+	flex-wrap: wrap
+.card-wrapper
+	box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
+	width: 300px
+	height: 423px
+	border-radius: 5px
+	border: 1px solid #FAFAFA
+	margin: 50px 10px 10px 10px
+	justify-content: space-between
+	.card-header
+		display: flex
+		height: 45px
+		position: relative
+		justify-content: center
+		.avatar
+			margin: 7px
+			position: absolute
+			bottom: 10px
+			left: 6px
+		.shelter-info
+			margin-top: 5px
+			.name
+				margin-left: 68px
+				margin-right: 5px
+				font-size: 11px
+	.animal-photo
+		height: 170px
+		img
+			border-radius: 3px
+			height: 100%
+			width: 100%
+			// https://www.geeksforgeeks.org/how-to-auto-resize-an-image-to-fit-a-div-container-using-css/
+			object-fit: cover
+	.animal-name
+		font-size: 24px
+		font-weight: bold
+	.card-description
+		height: 90px
+		overflow: auto
+	.card-social
+		margin-top: 5px
+	.card-button
+		button
+			background: #4FCBCD
+			border: none
+			cursor: pointer
+			height: 46px
+			width: 91%
+			border-radius: 5px
+		&:hover
+			color: red

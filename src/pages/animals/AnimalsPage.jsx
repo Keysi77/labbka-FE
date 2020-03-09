@@ -6,19 +6,18 @@ import { createStructuredSelector } from "reselect";
 import { fetchAnimals } from "../../redux/animals/animals.actions";
 import { selectAllAnimals } from "../../redux/animals/animals.selectors";
 // Components
-import AnimalItem from "../../components/animal-item/AnimalItem";
+import AnimalItem from "../../components/animal-item/Animals";
 
-const AnimalsPage = props => {
+const AnimalsPage = ({ fetchAnimals, animals }) => {
 	AnimalsPage.propTypes = {
 		animals: PropTypes.array,
 		fetchAnimals: PropTypes.func
 	};
 	useEffect(() => {
-		const { fetchAnimals } = props;
 		fetchAnimals();
 	}, []);
 
-	return <AnimalItem animals={props.animals} />;
+	return <AnimalItem animals={animals} />;
 };
 const mapDispatchToProps = dispatch => ({
 	fetchAnimals: () => dispatch(fetchAnimals())

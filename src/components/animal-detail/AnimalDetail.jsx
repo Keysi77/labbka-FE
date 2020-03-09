@@ -15,15 +15,15 @@ function AnimalDetail({ animal }) {
 
 	return (
 		<div className="animal-detail-wrapper">
-			<div className="animal-profile">
+			<div className="animal-wrapper">
 				ANIMAL
 				{animal.name}
 				{animal.size}
 				{animal.gender}
 			</div>
 			<div className="right-wrapper">
-				<div className="shelter-profile">Utulok</div>
-				<div className="map">mapa</div>
+				<div className="shelter-wrapper">shelter</div>
+				<div className="map-wrapper">mapa</div>
 			</div>
 		</div>
 	);

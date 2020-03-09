@@ -1,6 +1,27 @@
-.animal-detail-wrapper
-    display: flex
-    margin-top: 50px
 
 // tmava: 	#222222
 // bleda: #FFFFFD
+.animal-detail-wrapper
+	display: flex
+	width: 100%
+	justify-content: flex-start
+	align-content: flex-start
+	flex-wrap: wrap
+	.animal-wrapper
+		flex-grow: 1
+		flex-basis: 60%
+		height: 450px
+		background: red
+	.right-wrapper
+		flex-basis: 30%
+		flex-grow: 1
+		flex-basis: 400px
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		.shelter-wrapper
+			height: 250px
+			background: blue
+		.map-wrapper
+			height: 250px
+			background: green

@@ -9,7 +9,9 @@ import { fetchOneAnimal } from "../../redux/animals/animals.actions";
 import moment from "moment";
 // Antd
 import { Card, Avatar, Spin, Button, Typography, Row, Col } from "antd";
-
+// icons
+import locationIcon from "../../assets/icons/location_on.svg";
+import cakeIcon from "../../assets/icons/cake.svg";
 import {
 	EditOutlined,
 	EllipsisOutlined,
@@ -18,6 +20,7 @@ import {
 } from "@ant-design/icons";
 
 import "./Animals.sass";
+import { Animated } from "react-animated-css";
 
 const { Meta } = Card;
 const { Title, Text } = Typography;
@@ -64,9 +67,11 @@ export function Animals({ animals, fetchOneAnimal }) {
 				// 		</Button>
 				// 	</Link>
 				// </Card>
+				console.log("animal", animal);
 				// TODO: dorobit format
 				const createdAt = moment(animal.addedAt).format("YYYY/DD/MM");
-				console.log("animal", animal);
+				const avatarLogo = get(animal, "userRef.avatar");
+
 				return (
 					<div key={animal.id} className="card-wrapper">
 						<div className="card-header">
@@ -74,22 +79,38 @@ export function Animals({ animals, fetchOneAnimal }) {
 								className="avatar"
 								shape="square"
 								size={52}
-								src={get(animal, "userRef.avatar")}
+								src={avatarLogo}
 							/>
 							<div className="shelter-info">
 								<div className="name">{get(animal, "shelter[0].name")}</div>
 							</div>
 						</div>
-						<div className="animal-info">krizenec 5 rokov samcek stredny</div>
+						<div className="animal-info">
+							<div className="breed background-icon">
+								{get(animal, "breedRef.name")}
+							</div>
+							<div className="age background-icon">
+								<img src={cakeIcon} alt="narodeniny" />
+								{animal.age} rok
+							</div>
+							<div className="gender background-icon">
+								{animal.gender === "FEMALE" ? "samicka" : "samec"}
+							</div>
+							<div className="size background-icon">{animal.size}</div>
+						</div>
+						<div className="location-icon">
+							<img src={locationIcon} width="16px" />
+							<span>Zilina</span>
+						</div>
 						<div className="animal-photo">
 							<img src={animal.gallery[0]} alt="fotka zvieratka" />
 						</div>
 						<div className="animal-name">
 							<Title level={4}>{animal.name}</Title>
 						</div>
-						<div className="card-description">
+						{/* <div className="card-description">
 							<Text>{animal.desc}</Text>
-						</div>
+						</div> */}
 						<div className="card-social">likes koments</div>
 						<div className="card-button">
 							<Link to={"/detail-zvieratka/" + animal.id}>
@@ -107,9 +128,17 @@ export function Animals({ animals, fetchOneAnimal }) {
 	};
 
 	return (
-		<div className="animals-wrapper">
-			<AnimalItems />
-		</div>
+		<Animated
+			animationIn="fadeInRight"
+			animationOut="fadeOutLeft"
+			animationInDuration={1000}
+			animationOutDuration={1000}
+			isVisible={true}
+		>
+			<div className="animals-wrapper">
+				<AnimalItems />
+			</div>
+		</Animated>
 	);
 }
 const mapDispatchToProps = dispatch => ({

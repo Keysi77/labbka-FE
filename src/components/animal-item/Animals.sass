@@ -1,10 +1,19 @@
+.background-icon
+	border-radius: 5px
+	padding: 1px
+	padding-left: 7px
+	padding-right: 7px
+	margin-left: 3px
+	border: 1px solid silver
 .animals-wrapper
 	display: flex
 	flex-wrap: wrap
+	justify-content: space-around
 .card-wrapper
 	box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
-	width: 300px
+	width: 308px
 	height: 423px
+	position: relative
 	border-radius: 5px
 	border: 1px solid #FAFAFA
 	margin: 50px 10px 10px 10px
@@ -25,7 +34,21 @@
 				margin-left: 68px
 				margin-right: 5px
 				font-size: 11px
+	.animal-info
+		font-size: 12px
+		display: flex
+	.location-icon
+		min-width: 80px
+		display: flex
+		position: absolute
+		background: white
+		padding: 3px
+		top: 84px
+		background-color: rgba(255,255,255,0.5)
+		span
+			font-size: 12px
 	.animal-photo
+		margin-top: 10px
 		height: 170px
 		img
 			border-radius: 3px

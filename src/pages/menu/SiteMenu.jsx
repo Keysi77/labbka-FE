@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createStructuredSelector } from "reselect";
 import { Layout, Menu, Avatar, Button } from "antd";
+import labbkaLogo from "../../assets/logos/labbka_logo.png";
 import {
 	BarChartOutlined,
 	UserOutlined,
@@ -41,7 +42,9 @@ const SiteMenu = ({ children, logoutUser, loggedUser }) => {
 					left: 0
 				}}
 			>
-				<div className="logo" />
+				<div className="labbka-logo">
+					<img src={labbkaLogo} alt="Labbka" width="150" height="50" />
+				</div>
 				<Menu theme="dark" mode="inline">
 					<Menu.Item key="1">
 						<UserOutlined />

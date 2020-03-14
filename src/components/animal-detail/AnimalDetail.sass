@@ -12,8 +12,24 @@
 		width: 60%
 		flex-basis: 500px
 		height: 450px
-		background: red
 		margin-right: 10px
+		position: relative
+		border: 1px solid red
+		.animal-image
+			position: absolute
+			top: -20px
+			display: flex
+			img.animal-covored-photo
+				border-radius: 15px
+				width: 250px
+				height: 300px
+				object-fit: cover
+				cursor: pointer
+			&:hover
+				background: red
+				border: blue
+				z-index: 2
+			// https://www.geeksforgeeks.org/how-to-auto-resize-an-image-to-fit-a-div-container-using-css/
 	.right-wrapper
 		flex-grow: 1
 		width: 20%
@@ -45,28 +61,3 @@
 		.map-wrapper
 			height: 250px
 			// background: green
-
-// .animal-detail-wrapper
-// 	display: flex
-// 	width: 100%
-// 	justify-content: space-between
-// 	// align-content: flex-start
-// 	flex-wrap: wrap
-// 	// box-sizing: border-box
-// 	.animal-wrapper
-// 		flex-basis: 700px
-// 		height: 500px
-// 		background: red
-// 	.right-wrapper
-// 		// flex-grow: 1
-// 		flex-basis: 400px
-// 		display: flex
-// 		flex-direction: column
-// 		justify-content: space-between
-// 		.shelter-wrapper
-// 			height: 250px
-// 			border: 1px solid blue
-// 			// background: blue
-// 		.map-wrapper
-// 			height: 200px
-// 			background: green

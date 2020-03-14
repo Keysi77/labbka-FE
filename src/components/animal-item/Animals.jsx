@@ -67,11 +67,9 @@ export function Animals({ animals, fetchOneAnimal }) {
 				// 		</Button>
 				// 	</Link>
 				// </Card>
-				console.log("animal", animal);
-				// TODO: dorobit format
+
 				const createdAt = moment(animal.addedAt).format("YYYY/DD/MM");
 				const avatarLogo = get(animal, "userRef.avatar");
-
 				return (
 					<div key={animal.id} className="card-wrapper">
 						<div className="card-header">

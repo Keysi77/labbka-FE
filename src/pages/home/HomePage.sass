@@ -1,0 +1,90 @@
+
+// Mapa
+.home-wrapper
+	display: flex
+	flex-wrap: wrap
+.marker-button
+	background: none
+	cursor: pointer
+	border: none
+	&:hover
+		border: none
+	&:active
+		border: none
+.registered-shelters
+	span
+		font-size: 27px
+		font-weight: bold
+		color: #4FCBCD
+// Popup content
+.popup-wrapper
+	max-width: 280px
+	box-shadow: 2px 1px 14px 7px rgba(0, 0, 0, 0.2)
+	.title
+		color: #fff
+		max-width: 300px
+		font-size: 16px
+		padding: 10px
+		height: 60px
+		align-items: center
+		justify-content: center
+		display: flex
+		padding-bottom: 0
+		font-weight: bold
+	.shelter-cover
+		margin-top: 10px
+		height: 170px
+	img.shelter-cover-image
+		border-radius: 3px
+		height: 100%
+		width: 100%
+		object-fit: cover
+	span
+		color: #fff
+	.location-icon
+		min-width: 80px
+		display: flex
+		position: absolute
+		background: white
+		padding: 3px
+		top: 84px
+		border-radius: 3px
+		left: 5px
+		background-color: #f08f58
+	span
+		font-size: 12px
+	.address
+		padding-top: 9px
+		margin: 5px
+		color: #fff
+		font-size: 12px
+	.social
+		display: flex
+		justify-content: space-around
+		height: 80px
+.mapboxgl-popup-content
+	background: rgba(1, 1, 1, .5)!important
+	padding: 0 !important
+	button.mapboxgl-popup-close-button
+		font-size: 25px
+		padding: 5px
+		right: 5px
+		top: -4px
+		color: #fff
+		height: 0
+		&:hover
+			color: red
+	.card-button
+		margin-top: 5px
+		bottom: -21px
+		width: 100%
+		position: absolute
+		button
+			background: #4FCBCD
+			border: none
+			cursor: pointer
+			height: 46px
+			width: 91%
+			border-radius: 5px
+		&:hover
+			color: red

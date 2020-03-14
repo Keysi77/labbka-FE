@@ -4,24 +4,69 @@
 .animal-detail-wrapper
 	display: flex
 	width: 100%
-	justify-content: flex-start
+	justify-content: space-between
 	align-content: flex-start
 	flex-wrap: wrap
 	.animal-wrapper
-		flex-grow: 1
-		flex-basis: 60%
+		flex-grow: 2
+		width: 60%
+		flex-basis: 500px
 		height: 450px
 		background: red
+		margin-right: 10px
 	.right-wrapper
-		flex-basis: 30%
 		flex-grow: 1
-		flex-basis: 400px
+		width: 20%
+		flex-basis: 200px
 		display: flex
 		flex-direction: column
 		justify-content: space-between
 		.shelter-wrapper
-			height: 250px
-			background: blue
+			min-height: 250px
+			border: 1px solid #FAFAFA
+			border-radius: 10px
+			display: flex
+			position: relative
+			flex-direction: column
+			justify-content: flex-start
+			// .shelter-avatar
+			// 	position: absolute
+			// 	top: -17%
+			// 	left: 40%
+			.shelter-name
+				font-size: 24px
+				font-weight: bold
+			.shelter-address
+				font-size: 14px
+			.shelter-info
+				display: flex
+				justify-content: space-around
+				margin-top: 25px
 		.map-wrapper
 			height: 250px
-			background: green
+			// background: green
+
+// .animal-detail-wrapper
+// 	display: flex
+// 	width: 100%
+// 	justify-content: space-between
+// 	// align-content: flex-start
+// 	flex-wrap: wrap
+// 	// box-sizing: border-box
+// 	.animal-wrapper
+// 		flex-basis: 700px
+// 		height: 500px
+// 		background: red
+// 	.right-wrapper
+// 		// flex-grow: 1
+// 		flex-basis: 400px
+// 		display: flex
+// 		flex-direction: column
+// 		justify-content: space-between
+// 		.shelter-wrapper
+// 			height: 250px
+// 			border: 1px solid blue
+// 			// background: blue
+// 		.map-wrapper
+// 			height: 200px
+// 			background: green

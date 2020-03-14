@@ -22,8 +22,7 @@ export const fetchShelters = () => {
 			dispatch(fetchSheltersStart())
 
 			const { data } = await getReq(API_PATHS.GET_SHELTERS)
-			dispatch(fetchSheltersSuccess(data))
-
+			dispatch(fetchSheltersSuccess(data.shelters))
 			return data
 		} catch (error) {
 			dispatch(fetchSheltersFailure(error))

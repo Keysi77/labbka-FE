@@ -29,7 +29,6 @@ const SiteMenu = ({ children, logoutUser, loggedUser }) => {
 	};
 
 	// TODO: loggedUser po refreshi zmiznu data zo storu
-
 	return (
 		<Layout>
 			<Sider

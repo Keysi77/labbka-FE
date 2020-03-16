@@ -6,7 +6,7 @@ import { createStructuredSelector } from "reselect";
 import { fetchAnimals } from "../../redux/animals/animals.actions";
 import { selectAllAnimals } from "../../redux/animals/animals.selectors";
 // Components
-import AnimalItem from "../../components/animal-item/Animals";
+import AnimalItem from "../../components/AnimalItem/Animals";
 
 const AnimalsPage = ({ fetchAnimals, animals }) => {
 	AnimalsPage.propTypes = {

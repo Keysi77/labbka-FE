@@ -1,5 +1,5 @@
 import React from "react";
-import SiteMenu from "../pages/menu/SiteMenu";
+import SiteMenu from "../pages/Menu/SiteMenu";
 
 function Layout({ children }) {
 	return (

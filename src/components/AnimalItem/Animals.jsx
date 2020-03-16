@@ -24,7 +24,8 @@ import likeIcon from "../../assets/icons/like_filled.svg";
 import commentIcon from "../../assets/icons/comment.svg";
 import shareIcon from "../../assets/icons/share.svg";
 
-import Lightbox from "react-image-lightbox";
+// import Lightbox from "react-image-lightbox";
+
 import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
 
 import "./Animals.sass";
@@ -34,7 +35,7 @@ const formatter = buildFormatter(slovakStrings);
 
 class Animals extends Component {
 	static propTypes = {
-		animals: PropTypes.arrayOf(PropTypes.object).isRequired,
+		animals: PropTypes.arrayOf(PropTypes.object),
 		fetchOneAnimal: PropTypes.func
 	};
 
@@ -53,6 +54,9 @@ class Animals extends Component {
 
 		// TODO: presunut do utilky
 		const formatYears = year => {
+			if (year === undefined) {
+				return "Neznáme";
+			}
 			if (year === 0) {
 				return "Šteňa";
 			}
@@ -78,7 +82,7 @@ class Animals extends Component {
 		const AnimalItems = () => {
 			return animals ? (
 				map(animals, animal => {
-					const gallery = get(animal, "gallery");
+					// const gallery = get(animal, "gallery");
 					return (
 						<div key={animal.id} className="card-wrapper">
 							<div className="card-header">
@@ -142,7 +146,18 @@ class Animals extends Component {
 							</div>
 							{/* Description */}
 							<div className="card-description">
-								<p>{animal.desc}</p>
+								{animal.desc ? (
+									<p> {animal.desc} </p>
+								) : (
+									<p
+										style={{
+											display: "flex",
+											justifyContent: "center"
+										}}
+									>
+										Žiadny popis
+									</p>
+								)}
 							</div>
 							{/* Socialne media + komenty */}
 							<div className="card-social">

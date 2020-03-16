@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
@@ -9,35 +9,38 @@ import { Avatar } from "antd";
 import Lightbox from "react-image-lightbox";
 import "react-image-lightbox/style.css";
 
-// TODO: spravit template detail zvieratka
+// import ReactMapGL, { Marker, Popup } from "react-map-gl";
+
 class AnimalDetail extends Component {
-	static propTypes = {
-		animal: PropTypes.shape()
-	};
+	// static propTypes = {
+	// 	animal: PropTypes.shape
+	// };
 
 	state = {
 		photoIndex: 0,
-		isOpen: false
+		isOpen: false,
+		viewPort: {
+			latitude: 48.736279,
+			longitude: 19.146191,
+			zoom: 6.7,
+			width: "100%",
+			height: "500px"
+		}
 	};
 	render() {
+		// ! Pre mapu
+
 		const { animal } = this.props;
+		console.log("animal", animal);
+		// const latitude = get(animal.ownerInfo, "address.lat");
+		// const longitude = get(animal.ownerInfo, "address.lon");
+
 		const shelterAvatar = get(animal, "userRef.avatar");
-		const lat = get(animal.ownerInfo, "address.lat");
-		const lon = get(animal.ownerInfo, "address.lon");
-
-		// const [photoIndex, setPhotoIndex] = useState(0);
-		// const [isOpen, setIsOpen] = useState(false);
-
-		// const [images, setImages] = useState([]);
-		// useEffect(() => {
-		// 	setImages(get(animal, "gallery"));
-		// }, []);
 
 		const gallery = get(animal, "gallery");
-
-		console.log("animal", animal);
-
 		const { photoIndex, isOpen } = this.state;
+		// const latitude = get(shelter, "address.lat");
+		// const longitude = get(shelter, "address.lon");
 
 		return (
 			<div className="animal-detail-wrapper">
@@ -58,19 +61,19 @@ class AnimalDetail extends Component {
 					{isOpen && (
 						<Lightbox
 							mainSrc={gallery[photoIndex]}
-							nextSrc={gallery[(photoIndex + 1) % gallery.length]}
+							nextSrc={gallery[(photoIndex + 1) % size(gallery)]}
 							prevSrc={
-								gallery[(photoIndex + gallery.length - 1) % gallery.length]
+								gallery[(photoIndex + size(gallery) - 1) % size(gallery)]
 							}
 							onCloseRequest={() => this.setState({ isOpen: false })}
 							onMovePrevRequest={() =>
 								this.setState({
-									photoIndex: (photoIndex + gallery.length - 1) % gallery.length
+									photoIndex: (photoIndex + size(gallery) - 1) % size(gallery)
 								})
 							}
 							onMoveNextRequest={() =>
 								this.setState({
-									photoIndex: (photoIndex + 1) % gallery.length
+									photoIndex: (photoIndex + 1) % size(gallery)
 								})
 							}
 						/>
@@ -93,9 +96,20 @@ class AnimalDetail extends Component {
 							<div className="email">jdfskjdf@gmail.com</div>
 						</div>
 					</div>
-					IKONKA
-					<img src="/labbka_icon.png" alt="" />
-					<div className="map-wrapper">MAPA</div>
+					<div className="map-wrapper">
+						MAPA
+						{/* <ReactMapGL
+							style={{ borderRadius: "25px " }}
+							mapboxApiAccessToken="pk.eyJ1Ijoia2V5c2k3NyIsImEiOiJjazdtenF3cWwwOHF0M21ubjZncWw3M2U4In0.tIxoS5G3YmQXmitpQQawOw"
+							{...this.state.viewPort}
+							// onViewportChange={this.setState(viewPort)}
+							mapStyle="mapbox://styles/keysi77/ck7n056760l671ipank5701u0"
+						>
+							<Marker latitude={48.736279} longitude={19.146191}>
+								<div>You are here</div>
+							</Marker>
+						</ReactMapGL> */}
+					</div>
 				</div>
 			</div>
 		);

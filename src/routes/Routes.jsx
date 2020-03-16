@@ -7,13 +7,14 @@ import { withTranslation } from "react-i18next";
 // Komponenty
 import Layout from "../layouts/Layout";
 import NotFoundPage from "../pages/NotFoundPage";
-import Animals from "../pages/animals/AnimalsPage";
-import Shelters from "../pages/shelters/SheltersPage";
-import AnimalDetail from "../components/animal-detail/AnimalDetail";
-import Home from "../pages/home/HomePage";
-import Stories from "../pages/stories/StoriesPage";
+import Animals from "../pages/Animals/AnimalsPage";
+import Shelters from "../pages/Shelters/SheltersPage";
+import AnimalDetail from "../components/AnimalDetail/AnimalDetail";
+import Home from "../pages/Home/HomePage";
+import Stories from "../pages/Stories/StoriesPage";
 import * as PropTypes from "prop-types";
-import SignInSide from "../pages/authorization/SignInPage";
+import SignInSide from "../pages/Authorization/SignInPage";
+import ShelterDetail from "../components/ShelterDetail/ShelterDetail";
 
 const Routes = ({ t }) => {
 	Routes.propTypes = {
@@ -32,6 +33,12 @@ const Routes = ({ t }) => {
 				<PublicRoute
 					path={"/utulky"}
 					component={Shelters}
+					layout={Layout}
+					exact
+				/>
+				<PublicRoute
+					path={"/utulok/:shelterId"}
+					component={ShelterDetail}
 					layout={Layout}
 					exact
 				/>

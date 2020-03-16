@@ -52,11 +52,12 @@ const HomePage = props => {
 		};
 	}, []);
 
-	console.log("selectedShelter", selectedShelter);
 	if (!token) {
 		history.push("/prihlasenie");
 	}
+
 	const socialIconStyles = { height: 40, width: 40 };
+
 	return (
 		<div className="home-wrapper" style={{ borderRadius: "22px" }}>
 			<h1 className="registered-shelters">

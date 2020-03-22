@@ -12,9 +12,10 @@ import {
 	VideoCameraOutlined
 } from "@ant-design/icons";
 
-import "./SiteMenu.sass";
 import { logoutUser } from "../../redux/auth/auth.actions";
 import { selectLoggedUser } from "../../redux/auth/auth.selectors";
+
+import "./SiteMenu.sass";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -64,7 +65,10 @@ const SiteMenu = ({ children, logoutUser, loggedUser }) => {
 				</Menu>
 			</Sider>
 			<Layout className="site-layout" style={{ marginLeft: 200 }}>
-				<Header className="site-layout-background" style={{ padding: 0 }}>
+				<Header
+					className="site-layout-background"
+					style={{ paddingLeft: "40px", paddingRight: "40px" }}
+				>
 					<div className="page-name">Nazov page</div>
 					<div className="user-info">
 						<div className="user-name">

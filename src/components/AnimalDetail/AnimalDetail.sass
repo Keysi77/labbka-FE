@@ -8,38 +8,53 @@
 	align-content: flex-start
 	flex-wrap: wrap
 	.animal-wrapper
+		display: flex
+		background: #FAFAFA
+		border-radius: 10px
 		flex-grow: 2
 		width: 60%
 		flex-basis: 500px
 		height: 450px
-		margin-right: 10px
+		margin-right: 25px
 		position: relative
-		border: 1px solid red
-		.animal-image
-			position: absolute
-			top: -20px
+		.animal-info-2
+			width: 30%
+			flex-direction: column
+			align-items: flex-start
 			display: flex
+			margin-left: 30px
+			.animal-name
+				font-size: 25px
+				font-weight: bold
+		.animal-info-3
+			width: 30%
+		.animal-info-1
+			width: 30%
+		.animal-image
+			position: relative
+			width: 100%
+			height: 200px
 			img.animal-covored-photo
+				position: absolute
+				height: 100%
+				width: 100%
+				top: -20px
+				display: flex
+				border: 1px solid red
 				border-radius: 15px
-				width: 250px
-				height: 300px
 				object-fit: cover
+				margin-left: 20px
 				cursor: pointer
-			&:hover
-				background: red
-				border: blue
-				z-index: 2
-			// https://www.geeksforgeeks.org/how-to-auto-resize-an-image-to-fit-a-div-container-using-css/
 	.right-wrapper
 		flex-grow: 1
-		width: 20%
-		flex-basis: 200px
+		// width: 20%
+		flex-basis: 344px
 		display: flex
 		flex-direction: column
 		justify-content: space-between
 		.shelter-wrapper
 			min-height: 250px
-			border: 1px solid #FAFAFA
+			background: #FAFAFA
 			border-radius: 10px
 			display: flex
 			position: relative
@@ -54,10 +69,16 @@
 				font-weight: bold
 			.shelter-address
 				font-size: 14px
+				padding-left: 15px
+				padding-right: 15px
 			.shelter-info
 				display: flex
 				justify-content: space-around
 				margin-top: 25px
+				padding-left: 15px
+				padding-right: 15px
 		.map-wrapper
+			margin-top: 25px
 			height: 250px
-			// background: green
+			background: #FAFAFA
+			border-radius: 10px

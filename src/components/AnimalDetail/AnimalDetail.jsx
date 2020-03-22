@@ -28,10 +28,8 @@ class AnimalDetail extends Component {
 		}
 	};
 	render() {
-		// ! Pre mapu
-
 		const { animal } = this.props;
-		console.log("animal", animal);
+		// ! Pre mapu
 		// const latitude = get(animal.ownerInfo, "address.lat");
 		// const longitude = get(animal.ownerInfo, "address.lon");
 
@@ -41,20 +39,37 @@ class AnimalDetail extends Component {
 		const { photoIndex, isOpen } = this.state;
 		// const latitude = get(shelter, "address.lat");
 		// const longitude = get(shelter, "address.lon");
-
+		console.log("animal", animal);
 		return (
 			<div className="animal-detail-wrapper">
 				<div className="animal-wrapper">
-					<div
-						className="animal-image"
-						onClick={() => this.setState({ isOpen: true })}
-					>
-						<img
-							className="animal-covored-photo"
-							src={gallery && gallery[0]}
-							alt="fotka zvieratka"
-						/>
+					<div className="animal-info-1">
+						<div
+							className="animal-image"
+							onClick={() => this.setState({ isOpen: true })}
+						>
+							<img
+								className="animal-covored-photo"
+								src={gallery && gallery[0]}
+								alt="fotka zvieratka"
+							/>
+						</div>
+						<div>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+							saepe dolor nisi molestiae optio beatae explicabo delectus illum.
+							Eveniet commodi in error ut, aperiam provident dolorem excepturi
+							nihil fugiat possimus.
+						</div>
 					</div>
+					<div className="animal-info-2">
+						<div className="animal-name">
+							<h1>{get(animal, "name", "bez mena")}</h1>
+						</div>
+						<div className="animal-description">
+							{get(animal, "desc", "bez popisu")}
+						</div>
+					</div>
+					<div className="animal-info-3">meno zvieratka2</div>
 				</div>
 
 				<div>
@@ -89,7 +104,7 @@ class AnimalDetail extends Component {
 							{get(animal.ownerInfo, "address.city")}
 						</div>
 						<div className="shelter-address">
-							{get(animal.ownerInfo, "address.address")}
+							{get(animal, "ownerInfo.address.address")}
 						</div>
 						<div className="shelter-info">
 							<div className="phone">0902 258 687</div>

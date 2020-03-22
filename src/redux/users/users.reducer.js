@@ -16,9 +16,7 @@ const usersReducer = (state = INIT_STATE, action) => {
 				loggedUser: action.payload
 			};
 		case USER_ACTIONS.USER_LOGOUT:
-			return {
-				INIT_STATE
-			};
+			return INIT_STATE;
 		default:
 			return state;
 	}

@@ -35,7 +35,6 @@ export const fetchOneShelter = id => {
 		try {
 			dispatch({ type: SHELTERS_ACTION_TYPES.FETCH_ONE_SHELTER_START });
 			const { data } = await getReq(API_PATHS.GET_ONE_SHELTER(id));
-			console.log("data one shelter", data);
 			dispatch({
 				type: SHELTERS_ACTION_TYPES.FETCH_ONE_SHELTER_SUCCESS,
 				payload: data

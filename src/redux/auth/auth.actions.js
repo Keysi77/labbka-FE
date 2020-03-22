@@ -5,14 +5,15 @@ import { setAccessToken, clearAccessToken } from "../../utils/auth";
 import { postReq } from "../../utils/request";
 import { API_PATHS } from "../../enums/apiPaths";
 
-// TODO: History nefunguje
-// import { createBrowserHistory } from 'history'
-// const history = createBrowserHistory()
+export const LOGIN_TYPE = {
+	FACEBOOK: "FACEBOOK",
+	GOOGLE: "GOOGLE"
+};
 
 export const loginUser = loginData => {
 	return async dispatch => {
 		try {
-			if (loginData.loginType === "FACEBOOK") {
+			if (loginData.loginType === LOGIN_TYPE.FACEBOOK) {
 				const { data } = await postReq(
 					API_PATHS.LOGIN_USER_FACEBOOK,
 					undefined,
@@ -23,19 +24,22 @@ export const loginUser = loginData => {
 					payload: data
 				});
 				setAccessToken(data.bearer);
+				history.push("/zvieratka-na-adopciu");
+				return data;
 			}
-			if (loginData.loginType === "GOOGLE") {
-				const { data } = await postReq(
-					API_PATHS.LOGIN_USER_GOOGLE,
-					undefined,
-					loginData
-				);
-				// dispatch({
-				// 	type: USER_ACTIONS.USER_LOGIN,
-				// 	payload: data
-				// });
-				setAccessToken(data.bearer);
-			}
+			// FIXME: Nefunguje
+			// if (loginData.loginType === LOGIN_TYPE.GOOGLE) {
+			// 	const { data } = await postReq(
+			// 		API_PATHS.LOGIN_USER_GOOGLE,
+			// 		undefined,
+			// 		loginData
+			// 	);
+			// 	dispatch({
+			// 		type: USER_ACTIONS.USER_LOGIN,
+			// 		payload: data
+			// 	});
+			// 	setAccessToken(data.bearer);
+			// }
 			history.push("/zvieratka-na-adopciu");
 		} catch (error) {
 			console.log("error", error);

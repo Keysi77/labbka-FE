@@ -4,32 +4,31 @@
 .animal-detail-wrapper
 	display: flex
 	width: 100%
+	margin-top: 25px
 	justify-content: space-between
 	align-content: flex-start
 	flex-wrap: wrap
+	.info-wrapper
+		h1
+			text-align: left
 	.animal-wrapper
-		display: flex
+		padding: 20px
 		background: #FAFAFA
 		border-radius: 10px
 		flex-grow: 2
 		width: 60%
-		flex-basis: 500px
-		height: 450px
+		flex-basis: 700px
+		min-height: 450px
 		margin-right: 25px
 		position: relative
-		.animal-info-2
-			width: 30%
+		.animal-info
 			flex-direction: column
 			align-items: flex-start
 			display: flex
-			margin-left: 30px
+			// margin-left: 30px
 			.animal-name
 				font-size: 25px
 				font-weight: bold
-		.animal-info-3
-			width: 30%
-		.animal-info-1
-			width: 30%
 		.animal-image
 			position: relative
 			width: 100%
@@ -38,16 +37,22 @@
 				position: absolute
 				height: 100%
 				width: 100%
-				top: -20px
+				top: -60px
 				display: flex
-				border: 1px solid red
+				box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
 				border-radius: 15px
 				object-fit: cover
-				margin-left: 20px
 				cursor: pointer
+		// .poster-wrapper
+		// 	.poster-info-wrapper
+		// 		display: flex
+		// 		flex-direction: column
+		// 		.avatar
+		// 			display: flex
 	.right-wrapper
 		flex-grow: 1
 		// width: 20%
+		min-height: 450px
 		flex-basis: 344px
 		display: flex
 		flex-direction: column
@@ -82,3 +87,28 @@
 			height: 250px
 			background: #FAFAFA
 			border-radius: 10px
+
+.info-item
+	.avatar
+		display: flex
+		align-items: center
+	.info
+		display: flex
+		line-height: 16px
+		margin-left: 7px
+		flex-direction: column
+		align-items: flex-start
+		.info-name
+			font-size: 12px
+			color: #A0A0A0
+		.info-description
+			font-weight: bold
+			color: black
+
+@media screen and (max-width: 1323px)
+	.animal-detail-wrapper
+		.animal-wrapper
+			margin-right: 0
+		.right-wrapper
+			.shelter-wrapper
+				margin-top: 25px

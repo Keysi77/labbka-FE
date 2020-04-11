@@ -1,18 +1,28 @@
 @font-face
-    font-family: "Spartan"
-    src: url("./assets/fonts/Spartan-Regular.ttf")
-    font-weight: normal
+	font-family: "Spartan"
+	src: url("./assets/fonts/Spartan-Regular.ttf")
+	font-weight: normal
 
 a
-    text-decoration: none
-    color: black
+	text-decoration: none
+	color: black
+
 html
-    scroll-behavior: smooth
-    border: none
+	scroll-behavior: smooth
+	border: none
+
 *
-    font-family: "Spartan", sans-serif
-    box-sizing: border-box
+	font-family: "Spartan", sans-serif
+	box-sizing: border-box
 
-// // Primary color
-// // 4FCBCD
+.box-shadow
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14)
+	// box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
 
+// MOBILE / TABLET GENERAL
+// Pri 992px zrusit margin-left
+@media screen and (max-width: 992px)
+	.site-layout
+		margin-left: 0 !important
+	.site-layout-background
+		padding: 0 !important

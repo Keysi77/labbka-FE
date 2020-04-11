@@ -23,6 +23,12 @@ import sizeIcon from "../../assets/icons/velkost.svg";
 import likeIcon from "../../assets/icons/like_filled.svg";
 import commentIcon from "../../assets/icons/comment.svg";
 import shareIcon from "../../assets/icons/share.svg";
+// Utils
+import {
+	formatSize,
+	formatGender,
+	formatYears
+} from "../../utils/animalTextFormatters";
 
 // import Lightbox from "react-image-lightbox";
 
@@ -53,38 +59,23 @@ class Animals extends Component {
 		};
 
 		// TODO: presunut do utilky
-		const formatYears = year => {
-			if (year === undefined) {
-				return "Neznáme";
-			}
-			if (year === 0) {
-				return "Šteňa";
-			}
-			if (year === 1) {
-				return `${year} rok`;
-			}
-			if (year >= 5) {
-				return `${year} rokov`;
-			}
-			return `${year} roky`;
-		};
 
-		const formatSize = size => {
-			if (size === "SMALL") {
-				return "Malý";
-			}
-			if (size === "MEDIUM") {
-				return "Stredný";
-			}
-			return "Veľký";
-		};
+		// const formatSize = size => {
+		// 	if (size === "SMALL") {
+		// 		return "Malý";
+		// 	}
+		// 	if (size === "MEDIUM") {
+		// 		return "Stredný";
+		// 	}
+		// 	return "Veľký";
+		// };
 
 		const AnimalItems = () => {
 			return animals ? (
 				map(animals, animal => {
 					// const gallery = get(animal, "gallery");
 					return (
-						<div key={animal.id} className="card-wrapper">
+						<div key={animal.id} className="card-wrapper box-shadow">
 							<div className="card-header">
 								{/* Utulok info */}
 								<Avatar
@@ -101,11 +92,11 @@ class Animals extends Component {
 							</div>
 							{/* Ikonky info */}
 							<div className="animal-info">
-								<div className="breed background-icon">
+								<div title="plemeno" className="breed background-icon">
 									<img src={breedIcon} alt="plemeno" width="20" />
 									<span>
 										{get(animal, "breedRef.name") === "Neznáme plemeno"
-											? "Neznáme"
+											? "-"
 											: get(animal, "breedRef.name")}
 									</span>
 								</div>
@@ -115,9 +106,7 @@ class Animals extends Component {
 								</div>
 								<div className="gender background-icon">
 									<img src={genderIcon} alt="pohlavie" width="20" />
-									<span>
-										{animal.gender === "FEMALE" ? "Samička" : "Samček"}
-									</span>
+									<span>{formatGender(get(animal, "gender"))}</span>
 								</div>
 								<div className="size background-icon">
 									<img src={sizeIcon} alt="velkost" width="20" />

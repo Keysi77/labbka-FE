@@ -10,14 +10,16 @@ class PublicRoute extends Route {
 	};
 
 	render = () => {
+		const Layout = this.props.layout;
+		const Component = this.props.component;
 		if (this.props.layout) {
 			return (
-				<this.props.layout {...this.props}>
-					<this.props.component {...this.props} />
-				</this.props.layout>
+				<Layout {...this.props}>
+					<Component {...this.props} />
+				</Layout>
 			);
 		}
-		return <this.props.component {...this.props} />;
+		return <Component {...this.props} />;
 	};
 }
 

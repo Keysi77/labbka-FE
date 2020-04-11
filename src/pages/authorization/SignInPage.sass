@@ -1,51 +1,75 @@
-body
-    padding: 0
-    margin: 0
-.login-wrapper
-    display: flex
-    height: 100vh
-    .image
-        width: 60%
-        img
-            max-width: 100%
-            width: auto
-            height: 100vh
-    .login
-        width: 40%
-        .social-networks
-            margin: 10px
-            display: flex
-            flex-direction: column
-            .login-button
-                width: 100%
-                height: 60px
-                border: none
-                margin-top: 30px
-                font-size: 15px
-                font-weight: bold
-                color: #fff
-                cursor: pointer
-                &.facebook-login
-                    background-color: #4c69ba
-                    &:hover
-                        transition: background 400ms ease-in-out
-                        background: #3B5998
-                &.google-login
-                    background: #CF4334
-                    &:hover
-                        transition: background 400ms ease-in-out
-                        background: #C20806
-                &.custom-login
-                    border: 3px solid black
-                    width: 100%
-                    height: 60px
-                    border-radius: 0
-                    margin-top: 30px
-                    color: black
-                    &:hover
-                        transition: border 400ms ease-in-out
-                        border: 3px solid #4FCBCD
-                    span
-                        padding: 0
-                span
-                    padding: 8px
+.sign-page-wraper
+	background: #84FDFF
+	height: 100%
+	.animal-images
+		display: flex
+		margin-top: 50px
+		position: relative
+		.dog
+			position: absolute
+			left: 150px
+		.cat
+			position: absolute
+			right: 300px
+			top: 50px
+	.title
+		margin-top: 80px
+		margin-left: 150px
+		font-weight: bold
+		font-size: 50px
+		line-height: 96px
+	.subtitle
+		margin-left: 150px
+		font-size: 18px
+		line-height: 36px
+	.form-wrapper
+		.overlay
+			width: 627px
+			height: 497px
+			background: #03E3E7
+			border-radius: 10px
+			margin-top: 20%
+			display: flex
+			flex-direction: column
+			justify-content: space-around
+			align-items: center
+			.social-networks
+				border-radius: 10px
+				display: flex
+				flex-direction: column
+				align-items: center
+				.login-button
+					width: 100%
+					height: 80px
+					border: none
+					margin-top: 30px
+					font-size: 15px
+					font-weight: normal
+					color: #fff
+					cursor: pointer
+					border-radius: 10px
+					&.facebook-login
+						background-color: #4c69ba
+						&:hover
+							transition: background 400ms ease-in-out
+							background: #3B5998
+					&.google-login
+						background: #CF4334
+						&:hover
+							transition: background 400ms ease-in-out
+							background: #C20806
+					&.custom-login
+						background-color: transparent
+						border: 2px solid #4FCBCD
+						width: 100%
+						margin-top: 30px
+						color: black
+						&:hover
+							transition: border 400ms ease-in-out
+							border: 2px solid black
+							span
+								padding: 0
+					span
+						padding: 8px
+		.app-logos
+

@@ -21,7 +21,6 @@ const Routes = ({ t }) => {
 		t: PropTypes.func.isRequired
 	};
 	return (
-		<div id={"body"} style={{ height: "100%", width: "100%" }}>
 			<Switch>
 				<PublicRoute path={"/"} component={Home} layout={Layout} exact />
 				<PublicRoute
@@ -57,7 +56,6 @@ const Routes = ({ t }) => {
 				<PublicRoute path={"/prihlasenie"} component={SignInSide} exact />
 				<PublicRoute component={NotFoundPage} exact />
 			</Switch>
-		</div>
 	);
 };
 export default compose(withTranslation(), withRouter)(Routes);

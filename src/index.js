@@ -4,6 +4,8 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
+import './grid.min.css'
+
 // import "./i18n";
 
 ReactDOM.render(

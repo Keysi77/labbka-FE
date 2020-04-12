@@ -1,19 +1,73 @@
-.logo
-	height: 32px
-	background: rgba(255, 255, 255, 0.2)
-	margin: 16px
-// TODO: farba contentu
-// .site-layout .site-layout-background
-// 	background: #fff
+$main-color: #03E3E7
+$secondary-color: #84FDFF
+$selected-color: #f08f58
+$layout-margin: 37px
+$content-side-padding: 25px
+$layout-background-color: #E5E5E5
 
-[data-theme="dark"] .site-layout .site-layout-background
-	background: #141414
-.ant-layout-header.site-layout-background
-	display: flex
-	justify-content: space-between
-	background: #F0F2F5
-.content
-	min-height: 84vh
-.user-info
-	display: flex
-	align-items: center
+// Layout
+.layout-wrapper
+	section.ant-layout
+		min-height: 100vh
+		background-color: $layout-background-color
+		// content
+		.content
+			margin-left: $layout-margin
+			margin-right: $layout-margin
+			margin-top: 50px
+			margin-bottom: 50px
+			padding-left: $content-side-padding
+			padding-right: $content-side-padding
+		// Sider menu
+		.ant-layout-sider-children
+			background-color: $main-color
+			.avatar
+				display: flex
+				flex-direction: column
+				align-items: center
+				margin-bottom: 30px
+			.ant-menu
+				background-color: $main-color
+				display: flex
+				flex-direction: column
+				align-items: center
+				.ant-menu-item
+					width: 80%
+					display: flex
+					align-items: center
+					border-radius: 5px
+					height: 50px
+					&:hover
+						background-color: $secondary-color
+					a
+						font-size: 19px
+						color: #2E2626
+					span
+						font-size: 25px
+						color: #2E2626
+				.ant-menu-item-selected
+					transition: background 800ms ease-in-out
+					background-color: $secondary-color
+					a, span
+						color: $selected-color
+		// header
+		header.ant-layout-header
+			display: flex
+			justify-content: space-between
+			background: $main-color
+			margin-left: $layout-margin
+			margin-right: $layout-margin
+			border-radius: 0 0 20px 20px
+			height: 80px
+			padding-left: 40px
+			padding-right: 40px
+			.user-info
+				display: flex
+				align-items: center
+		// Footer
+		footer.ant-layout-footer
+			background-color: $main-color
+			margin-left: $layout-margin
+			margin-right: $layout-margin
+			border-radius: 20px 20px 0 0
+			height: 80px

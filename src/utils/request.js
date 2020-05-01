@@ -10,9 +10,9 @@ import axios from 'axios'
  * Performs post request to url and returns callback with result
  */
 
-export const getReq = async(url, params, customConfig = {} ) => {
+export const getReq = async (url, params, customConfig = {}) => {
 	const config = {
-		...customConfig,
+		...customConfig
 	}
 
 	if (params) {
@@ -29,7 +29,7 @@ export const getReq = async(url, params, customConfig = {} ) => {
 
 export const postReq = async (url, params, data = {}, customConfig = {}) => {
 	const config = {
-		...customConfig,
+		...customConfig
 	}
 
 	if (params) {
@@ -37,7 +37,7 @@ export const postReq = async (url, params, data = {}, customConfig = {}) => {
 	}
 
 	try {
-		const res =  await axios.post(url, data, config)
+		const res = await axios.post(url, data, config)
 		return res
 	} catch (e) {
 		return Promise.reject(e)

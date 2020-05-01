@@ -1,18 +1,18 @@
 // Redux
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux'
 // import storageLocal from "redux-persist/lib/storage";
-import { persistReducer } from "redux-persist";
-import storageSession from "redux-persist/es/storage/session";
+import { persistReducer } from 'redux-persist'
+import storageSession from 'redux-persist/es/storage/session'
 // Reducers
-import sheltersReducer from "./shelters/shelters.reducer";
-import animalsReducer from "./animals/animals.reducer";
-import usersReducer from "./users/users.reducer";
+import sheltersReducer from './shelters/shelters.reducer'
+import animalsReducer from './animals/animals.reducer'
+import usersReducer from './users/users.reducer'
 
 export const REDUCER_KEYS = {
-	USERS: "users",
-	ANIMALS: "animals",
-	SHELTERS: "shelters"
-};
+	USERS: 'users',
+	ANIMALS: 'animals',
+	SHELTERS: 'shelters'
+}
 
 const rootReducer = combineReducers({
 	shelters: sheltersReducer,
@@ -24,6 +24,6 @@ const rootReducer = combineReducers({
 		},
 		usersReducer
 	)
-});
+})
 
-export default rootReducer;
+export default rootReducer

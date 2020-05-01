@@ -6,6 +6,6 @@ export const NAMESPACE = {
 	PATHS: 'paths'
 }
 
-export const LANGUAGES = ['sk']
+export const LANGUAGES = [ 'sk' ]
 
 export const DEFAULT_LOCALE = 'sk'

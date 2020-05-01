@@ -1,38 +1,38 @@
-export const formatSize = size => {
+export const formatSize = (size) => {
 	if (!size) {
-		return "-";
+		return '-'
 	}
-	if (size === "SMALL") {
-		return "Malý";
+	if (size === 'SMALL') {
+		return 'Malý'
 	}
-	if (size === "MEDIUM") {
-		return "Stredný";
+	if (size === 'MEDIUM') {
+		return 'Stredný'
 	}
-	return "Veľký";
-};
+	return 'Veľký'
+}
 
-export const formatGender = gender => {
+export const formatGender = (gender) => {
 	if (!gender) {
-		return "-";
+		return '-'
 	}
-	if (gender === "MALE") {
-		return "Samcek";
+	if (gender === 'MALE') {
+		return 'Samcek'
 	}
-	return "Samicka";
-};
+	return 'Samicka'
+}
 
-export const formatYears = year => {
+export const formatYears = (year) => {
 	if (!year) {
-		return "-";
+		return '-'
 	}
 	if (year === 0) {
-		return "Šteňa";
+		return 'Šteňa'
 	}
 	if (year === 1) {
-		return `${year} rok`;
+		return `${year} rok`
 	}
 	if (year >= 5) {
-		return `${year} rokov`;
+		return `${year} rokov`
 	}
-	return `${year} roky`;
-};
+	return `${year} roky`
+}

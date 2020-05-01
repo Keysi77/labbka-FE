@@ -5,47 +5,62 @@
 	transition: .5s ease
 	.shelter-item
 		display: flex
-		box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
-		width: 48%
-		height: 250px
-		max-height: 300px
+		// box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
 		flex-direction: row
 		position: relative
 		margin: 10px
+		min-height: 260px
 		margin-top: 40px
 		cursor: pointer
-		.shelter-info
+		.shelter-name
+			min-width: 300px
+			height: 60px
 			position: absolute
-			z-index: 1
+			z-index: 5
+			top: -30px
+			background: #03E3E7
+			border-radius: 10px
+			right: 17px
+			font-size: 24px
+			padding-left: 10px
+			padding-right: 10px
 			display: flex
-			align-items: flex-start
-			width: 90%
-			flex-direction: column
-			height: 90px
-			background: #4CAF4F
-			box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
-			left: 5%
-			top: -25px
-			border-radius: 5px
-			.name
-				height: 44px
-				margin-left: 10px
-				margin-top: 7px
-				color: #fff
-				font-weight: bold
-				display: flex
-				align-items: center
-			.description
-				height: 37px
-				overflow: hidden
-				margin-left: 10px
-				margin-right: 10px
-				color: rgba(255,255,255,.72)
-				font-size: 12px
-				text-align: left
-				font-weight: lighter
-				line-height: 20px
+			align-items: center
+			justify-content: center
+			color: #000000
+		// .shelter-info
+		// 	position: absolute
+		// 	z-index: 1
+		// 	display: flex
+		// 	align-items: flex-start
+		// 	width: 90%
+		// 	flex-direction: column
+		// 	height: 90px
+		// 	background: #4CAF4F
+		// 	box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
+		// 	left: 5%
+		// 	top: -25px
+		// 	border-radius: 5px
+		// 	.name
+		// 		height: 44px
+		// 		margin-left: 10px
+		// 		margin-top: 7px
+		// 		color: #fff
+		// 		font-weight: bold
+		// 		display: flex
+		// 		align-items: center
+		// 	.description
+		// 		height: 37px
+		// 		overflow: hidden
+		// 		margin-left: 10px
+		// 		margin-right: 10px
+		// 		color: rgba(255,255,255,.72)
+		// 		font-size: 12px
+		// 		text-align: left
+		// 		font-weight: lighter
+		// 		line-height: 20px
 		.shelter-cover
+			border-radius: 20px
 			img.cover
 				height: 100%
 				width: 100%

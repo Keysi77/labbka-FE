@@ -1,14 +1,14 @@
-import React, { Suspense } from "react";
+import React, { Suspense } from 'react'
 // Router
-import { I18nextProvider } from "react-i18next";
-import { BrowserRouter } from "react-router-dom";
-import { Router } from "react-router";
-import Routes from "./routes/Routes";
-import { history } from "./utils/history";
+import { I18nextProvider } from 'react-i18next'
+import { BrowserRouter } from 'react-router-dom'
+import { Router } from 'react-router'
+import Routes from './routes/Routes'
+import { history } from './utils/history'
 // Styly
-import "antd/dist/antd.css";
-import "./App.sass";
-import i18n from "./utils/localization/i18n";
+import 'antd/dist/antd.css'
+import './App.sass'
+import i18n from './utils/localization/i18n'
 
 function App() {
 	return (
@@ -21,6 +21,6 @@ function App() {
 				</BrowserRouter>
 			</I18nextProvider>
 		</Suspense>
-	);
+	)
 }
-export default App;
+export default App

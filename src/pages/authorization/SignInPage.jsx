@@ -1,37 +1,36 @@
-import React from "react";
-import { useHistory } from "react-router-dom";
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 // Ant
-import { Tooltip } from "antd";
+import { Tooltip } from 'antd'
 // Logos
-import googlePlayLogo from "../../assets/logos/google_play.png";
-import appleStoreLogo from "../../assets/logos/apple_store.svg";
-import dog from "../../assets/images/dog.png";
-import cat from "../../assets/images/cat.png";
+import googlePlayLogo from '../../assets/logos/google_play.png'
+import appleStoreLogo from '../../assets/logos/apple_store.svg'
+import dog from '../../assets/images/dog.png'
+import cat from '../../assets/images/cat.png'
 // Komponenty
-import Facebook from "./Facebook";
-import Google from "./Google";
+import Facebook from './components/Facebook'
+import Google from './components/Google'
 // utils
-import { getAccessToken } from "../../utils/auth";
+import { getAccessToken } from '../../utils/auth'
 // css
-import "./SignInPage.sass";
+import './SignInPage.sass'
 
 export default function SignInPage() {
-	const history = useHistory();
-	const token = getAccessToken();
+	const history = useHistory()
+	const token = getAccessToken()
 
 	if (token) {
-		history.push("/zvieratka-na-adopciu");
+		history.push('/zvieratka-na-adopciu')
 	}
 
 	return (
-		<div className={"sign-page-wraper"}>
+		<div className={'sign-page-wraper'}>
 			<div className="row">
 				<div className="col-md-6">
 					<div className="title">Nejaky Nadpis</div>
 					<div className="subtitle">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Consequuntur unde hic eos modi veniam? Repellendus dolor delectus
-						animi, magni corrupti consequuntur temporibus iste eaque hic, natus
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur unde hic eos modi veniam?
+						Repellendus dolor delectus animi, magni corrupti consequuntur temporibus iste eaque hic, natus
 						vero ea culpa. Alias.
 					</div>
 					<div className="animal-images">
@@ -53,7 +52,7 @@ export default function SignInPage() {
 									<Google />
 									<button
 										className="login-button custom-login"
-										onClick={() => history.push("/zvieratka-na-adopciu")}
+										onClick={() => history.push('/zvieratka-na-adopciu')}
 									>
 										<span>Pokračovať bez prihlásenia</span>
 									</button>
@@ -66,31 +65,19 @@ export default function SignInPage() {
 											<div
 												onClick={() =>
 													window.open(
-														"https://play.google.com/store/apps/details?id=sk.franek.labbka",
-														"_blank"
-													)
-												}
-												style={{ cursor: "pointer" }}
+														'https://play.google.com/store/apps/details?id=sk.franek.labbka',
+														'_blank'
+													)}
+												style={{ cursor: 'pointer' }}
 												className="google-play-logo"
 											>
-												<img
-													src={googlePlayLogo}
-													width="200"
-													alt="google play"
-												/>
+												<img src={googlePlayLogo} width="200" alt="google play" />
 											</div>
 										</div>
 										<div className="col-md-6">
 											<Tooltip title="Aplikaciu pre iOS system pripravujeme">
-												<div
-													style={{ cursor: "not-allowed" }}
-													className="apple-store-logo"
-												>
-													<img
-														src={appleStoreLogo}
-														width="200"
-														alt="apple store"
-													/>
+												<div style={{ cursor: 'not-allowed' }} className="apple-store-logo">
+													<img src={appleStoreLogo} width="200" alt="apple store" />
 												</div>
 											</Tooltip>
 										</div>
@@ -102,5 +89,5 @@ export default function SignInPage() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }

@@ -8,41 +8,81 @@
 	justify-content: space-between
 	align-content: flex-start
 	flex-wrap: wrap
+	.photo-item
+		width: 170px
+		height: 114px
+		margin-right: 12px
+		margin-bottom: 12px
+		overflow: hidden
+		cursor: pointer
+		border-radius: 6px
+		img
+			height: 100%
+			width: 100%
+			object-fit: cover
+			transition: transform 500ms ease-in-out
+		&:hover
+			img
+				transform: scale(1.3) rotate(10deg)
+
 	.info-wrapper
 		h1
 			text-align: left
 	.animal-wrapper
 		padding: 20px
 		background: #FAFAFA
-		border-radius: 10px
+		border-top-left-radius: 10px
+		border-bottom-left-radius: 10px
 		flex-grow: 2
 		width: 60%
 		flex-basis: 700px
 		min-height: 450px
 		margin-right: 25px
 		position: relative
+		.adoption-button
+			position: absolute
+			bottom: -25px
+			right: 56px
+			background: #4CAF4F
+			width: 270px
+			height: 50px
+			border-radius: 10px
+			border: none
+			&:hover
+				color: #000000
+			span
+				font-size: 24px
+				line-height: 36px
+				text-align: center
 		.animal-info
 			flex-direction: column
 			align-items: flex-start
 			display: flex
-			// margin-left: 30px
+			width: 100%
 			.animal-name
 				font-size: 25px
 				font-weight: bold
+				width: 100%
+				border-bottom: 1.5px solid #84FDFF
+			.animal-description
+				margin-top: 10px
+				min-height: 70px
 		.animal-image
-			position: relative
+			position: absolute
 			width: 100%
-			height: 200px
+			height: 175px
 			img.animal-covored-photo
 				position: absolute
 				height: 100%
-				width: 100%
+				width: 96%
 				top: -60px
 				display: flex
 				box-shadow: 2px 1px 14px 7px rgba(0,0,0,0.2)
 				border-radius: 15px
 				object-fit: cover
 				cursor: pointer
+				transition: transform 500ms ease-in-out
+
 		// .poster-wrapper
 		// 	.poster-info-wrapper
 		// 		display: flex
@@ -51,18 +91,19 @@
 		// 			display: flex
 	.right-wrapper
 		flex-grow: 1
-		// width: 20%
 		min-height: 450px
 		flex-basis: 344px
 		display: flex
 		flex-direction: column
 		justify-content: space-between
 		.shelter-wrapper
-			min-height: 250px
+			height: 100%
 			background: #FAFAFA
-			border-radius: 10px
+			border-top-right-radius: 10px
+			border-bottom-right-radius: 10px
 			display: flex
 			position: relative
+			align-items: center
 			flex-direction: column
 			// .shelter-avatar
 			// 	position: absolute
@@ -81,11 +122,11 @@
 				margin-top: 25px
 				padding-left: 15px
 				padding-right: 15px
-		.map-wrapper
-			margin-top: 25px
-			height: 250px
-			background: #FAFAFA
-			border-radius: 10px
+		// .map-wrapper
+		// 	margin-top: 25px
+		// 	height: 250px
+		// 	background: #FAFAFA
+		// 	border-radius: 10px
 
 .info-item
 	.avatar

@@ -27,7 +27,7 @@
   },
   "globals": {},
   "rules": {
-    // "semi": ["error", "never"],
+    "semi": ["error", "never"],
     "no-console": 1,
     "react/prop-types": [2, { "ignore": ["children"] }],
     "no-multiple-empty-lines": [1, { "max": 1 }],

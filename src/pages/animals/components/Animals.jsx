@@ -1,62 +1,63 @@
-import PropTypes from "prop-types";
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 // lodash
-import { map, get, size } from "lodash";
+import { map, get, size, find } from 'lodash'
 // Akcia
-import { fetchOneAnimal } from "../../redux/animals/animals.actions";
-import TimeAgo from "react-timeago";
-import slovakStrings from "react-timeago/lib/language-strings/sk";
-import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
+import { fetchOneAnimal } from '../../../redux/animals/animals.actions'
+import TimeAgo from 'react-timeago'
+import slovakStrings from 'react-timeago/lib/language-strings/sk'
+import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
+
 // TODO: spravit sharovanie
 // import { FacebookShareButton } from "react-share";
+
 // Antd
-import { Avatar, Spin } from "antd";
+import { Avatar, Spin } from 'antd'
+
 // icons
-import locationIcon from "../../assets/icons/location_on.svg";
-// ikony do karty
-import breedIcon from "../../assets/icons/plemeno.svg";
-import cakeIcon from "../../assets/icons/torta.svg";
-import genderIcon from "../../assets/icons/pohlavie.svg";
-import sizeIcon from "../../assets/icons/velkost.svg";
-import likeIcon from "../../assets/icons/like_filled.svg";
-import commentIcon from "../../assets/icons/comment.svg";
-import shareIcon from "../../assets/icons/share.svg";
-// Utils
 import {
-	formatSize,
-	formatGender,
-	formatYears
-} from "../../utils/animalTextFormatters";
+	breedIcon,
+	cakeIcon,
+	genderIcon,
+	sizeIcon,
+	likeIcon,
+	commentIcon,
+	shareIcon,
+	locationIcon
+} from '../../../utils/icons'
 
-// import Lightbox from "react-image-lightbox";
+// Utils
+import { formatSize, formatGender, formatYears } from '../../../utils/animalTextFormatters'
 
-import "react-image-lightbox/style.css"; // This only needs to be imported once in your app
+// LightBox
+import Lightbox from 'react-image-lightbox'
+import 'react-image-lightbox/style.css' // This only needs to be imported once in your app
 
-import "./Animals.sass";
-import { Animated } from "react-animated-css";
+import { Animated } from 'react-animated-css'
 
-const formatter = buildFormatter(slovakStrings);
+const formatter = buildFormatter(slovakStrings)
 
 class Animals extends Component {
 	static propTypes = {
 		animals: PropTypes.arrayOf(PropTypes.object),
 		fetchOneAnimal: PropTypes.func
-	};
+	}
 
 	state = {
 		photoIndex: 0,
-		isOpen: false
-	};
+		isOpen: false,
+		animalID: null
+	}
 
 	render() {
-		const { animals, fetchOneAnimal } = this.props;
+		const { animals, fetchOneAnimal } = this.props
 		// const { photoIndex, isOpen } = this.state;
 
-		const handleAdoption = id => {
-			fetchOneAnimal(id);
-		};
+		const handleAdoption = (id) => {
+			fetchOneAnimal(id)
+		}
 
 		// TODO: presunut do utilky
 
@@ -71,9 +72,12 @@ class Animals extends Component {
 		// };
 
 		const AnimalItems = () => {
+			const { photoIndex, isOpen } = this.state
+			// TODO: opravit preblikavanie galerie
+			const animalGallery = get(find(animals, (animal) => animal.id === this.state.animalID), 'gallery')
+
 			return animals ? (
-				map(animals, animal => {
-					// const gallery = get(animal, "gallery");
+				map(animals, (animal) => {
 					return (
 						<div key={animal.id} className="card-wrapper box-shadow">
 							<div className="card-header">
@@ -82,11 +86,11 @@ class Animals extends Component {
 									className="avatar"
 									shape="square"
 									size={52}
-									src={get(animal, "userRef.avatar")}
+									src={get(animal, 'userRef.avatar')}
 								/>
 								<div className="shelter-info">
 									<div className="name">
-										<strong>{get(animal, "shelter[0].name")}</strong>
+										<strong>{get(animal, 'shelter[0].name')}</strong>
 									</div>
 								</div>
 							</div>
@@ -95,9 +99,11 @@ class Animals extends Component {
 								<div title="plemeno" className="breed background-icon">
 									<img src={breedIcon} alt="plemeno" width="20" />
 									<span>
-										{get(animal, "breedRef.name") === "Neznáme plemeno"
-											? "-"
-											: get(animal, "breedRef.name")}
+										{get(animal, 'breedRef.name') === 'Neznáme plemeno' ? (
+											'-'
+										) : (
+											get(animal, 'breedRef.name')
+										)}
 									</span>
 								</div>
 								<div className="age background-icon">
@@ -106,7 +112,7 @@ class Animals extends Component {
 								</div>
 								<div className="gender background-icon">
 									<img src={genderIcon} alt="pohlavie" width="20" />
-									<span>{formatGender(get(animal, "gender"))}</span>
+									<span>{formatGender(get(animal, 'gender'))}</span>
 								</div>
 								<div className="size background-icon">
 									<img src={sizeIcon} alt="velkost" width="20" />
@@ -127,11 +133,7 @@ class Animals extends Component {
 									<img src={locationIcon} width="16" />
 									<span>{animal.ownerInfo.address.city}</span>
 								</div>
-								<img
-									className="animal-covored-photo"
-									src={animal.gallery[0]}
-									alt="fotka zvieratka"
-								/>
+								<img className="animal-covored-photo" src={animal.gallery[0]} alt="fotka zvieratka" />
 							</div>
 							{/* Description */}
 							<div className="card-description">
@@ -140,8 +142,8 @@ class Animals extends Component {
 								) : (
 									<p
 										style={{
-											display: "flex",
-											justifyContent: "center"
+											display: 'flex',
+											justifyContent: 'center'
 										}}
 									>
 										Žiadny popis
@@ -166,54 +168,52 @@ class Animals extends Component {
 								</div>
 								{/* Lightbox galeria */}
 								{/* TODO: NEfunguje posuva ine obrazky ako by mal */}
-								{/* <div>
+								<div>
 									<button
 										type="button"
-										onClick={() => this.setState({ isOpen: true })}
+										onClick={() => this.setState({ animalID: get(animal, 'id'), isOpen: true })}
 									>
 										Open Lightbox
 									</button>
 
 									{isOpen && (
 										<Lightbox
-											mainSrc={gallery && gallery[photoIndex]}
-											nextSrc={gallery[(photoIndex + 1) % gallery.length]}
+											mainSrc={animalGallery && animalGallery[photoIndex]}
+											nextSrc={animalGallery[(photoIndex + 1) % animalGallery.length]}
 											prevSrc={
-												gallery[
-													(photoIndex + gallery.length - 1) % gallery.length
+												animalGallery[
+													(photoIndex + animalGallery.length - 1) % animalGallery.length
 												]
 											}
 											onCloseRequest={() => this.setState({ isOpen: false })}
 											onMovePrevRequest={() =>
 												this.setState({
 													photoIndex:
-														(photoIndex + gallery.length - 1) % gallery.length
-												})
-											}
+														(photoIndex + animalGallery.length - 1) % animalGallery.length
+												})}
 											onMoveNextRequest={() =>
 												this.setState({
-													photoIndex: (photoIndex + 1) % gallery.length
-												})
-											}
+													photoIndex: (photoIndex + 1) % animalGallery.length
+												})}
 										/>
 									)}
-								</div> */}
+								</div>
 							</div>
 							{/* Presmerovanie */}
 							<div className="card-button">
-								<Link to={"/detail-zvieratka/" + animal.id}>
+								<Link to={'/detail-zvieratka/' + animal.id}>
 									<button onClick={() => handleAdoption(animal.id)}>
 										<span>Viac Informacii</span>
 									</button>
 								</Link>
 							</div>
 						</div>
-					);
+					)
 				})
 			) : (
 				<Spin />
-			);
-		};
+			)
+		}
 
 		return (
 			<Animated
@@ -225,13 +225,14 @@ class Animals extends Component {
 			>
 				<div className="animals-wrapper">
 					<AnimalItems />
+					
 				</div>
 			</Animated>
-		);
+		)
 	}
 }
-const mapDispatchToProps = dispatch => ({
-	fetchOneAnimal: id => dispatch(fetchOneAnimal(id))
-});
+const mapDispatchToProps = (dispatch) => ({
+	fetchOneAnimal: (id) => dispatch(fetchOneAnimal(id))
+})
 
-export default connect(null, mapDispatchToProps)(Animals);
+export default connect(null, mapDispatchToProps)(Animals)

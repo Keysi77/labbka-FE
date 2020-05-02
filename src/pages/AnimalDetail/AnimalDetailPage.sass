@@ -67,6 +67,7 @@
 			.animal-description
 				margin-top: 10px
 				min-height: 70px
+				margin-bottom: 30px
 		.animal-image
 			position: absolute
 			width: 100%
@@ -83,12 +84,19 @@
 				cursor: pointer
 				transition: transform 500ms ease-in-out
 
-		// .poster-wrapper
-		// 	.poster-info-wrapper
-		// 		display: flex
-		// 		flex-direction: column
-		// 		.avatar
-		// 			display: flex
+		.poster-wrapper
+			.poster-info
+				margin-left: 10px
+				.name
+					font-size: 16px
+					font-weight: 500
+				.added
+					font-size: 11px
+					color: #A0A0A0
+			.contact-info
+				text-align: center
+				width: 100%
+				margin-top: 10px
 	.right-wrapper
 		flex-grow: 1
 		min-height: 450px
@@ -142,7 +150,7 @@
 			font-size: 12px
 			color: #A0A0A0
 		.info-description
-			font-weight: bold
+			font-weight: 500
 			color: black
 
 @media screen and (max-width: 1323px)

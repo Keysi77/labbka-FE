@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 // lodash
-import { map, get, size, find } from 'lodash'
+import { map, get, size } from 'lodash'
 // Akcia
 import { fetchOneAnimal } from '../../../redux/animals/animals.actions'
 import TimeAgo from 'react-timeago'
@@ -29,11 +29,7 @@ import {
 } from '../../../utils/icons'
 
 // Utils
-import { formatSize, formatGender, formatYears } from '../../../utils/animalTextFormatters'
-
-// LightBox
-import Lightbox from 'react-image-lightbox'
-import 'react-image-lightbox/style.css' // This only needs to be imported once in your app
+import { formatSize, formatGender, formatYears } from '../../../utils/helper'
 
 import { Animated } from 'react-animated-css'
 
@@ -46,8 +42,8 @@ class Animals extends Component {
 	}
 
 	state = {
-		photoIndex: 0,
-		isOpen: false,
+		// photoIndex: 0,
+		// isOpen: false,
 		animalID: null
 	}
 
@@ -59,33 +55,21 @@ class Animals extends Component {
 			fetchOneAnimal(id)
 		}
 
-		// TODO: presunut do utilky
-
-		// const formatSize = size => {
-		// 	if (size === "SMALL") {
-		// 		return "Malý";
-		// 	}
-		// 	if (size === "MEDIUM") {
-		// 		return "Stredný";
-		// 	}
-		// 	return "Veľký";
-		// };
-
 		const AnimalItems = () => {
-			const { photoIndex, isOpen } = this.state
+			// const { photoIndex, isOpen } = this.state
 			// TODO: opravit preblikavanie galerie
-			const animalGallery = get(find(animals, (animal) => animal.id === this.state.animalID), 'gallery')
+			// const animalGallery = get(find(animals, (animal) => animal.id === this.state.animalID), 'gallery')
 
 			return animals ? (
 				map(animals, (animal) => {
 					return (
-						<div key={animal.id} className="card-wrapper box-shadow">
+						<div key={animal.id} className="card-wrapper">
 							<div className="card-header">
 								{/* Utulok info */}
 								<Avatar
 									className="avatar"
 									shape="square"
-									size={52}
+									size={60}
 									src={get(animal, 'userRef.avatar')}
 								/>
 								<div className="shelter-info">
@@ -130,7 +114,7 @@ class Animals extends Component {
 							{/* Fotka */}
 							<div className="animal-photo">
 								<div className="location">
-									<img src={locationIcon} width="16" />
+									<img src={locationIcon} width="16" alt="location" />
 									<span>{animal.ownerInfo.address.city}</span>
 								</div>
 								<img className="animal-covored-photo" src={animal.gallery[0]} alt="fotka zvieratka" />
@@ -140,12 +124,7 @@ class Animals extends Component {
 								{animal.desc ? (
 									<p> {animal.desc} </p>
 								) : (
-									<p
-										style={{
-											display: 'flex',
-											justifyContent: 'center'
-										}}
-									>
+									<p className="no-description">
 										Žiadny popis
 									</p>
 								)}
@@ -154,49 +133,17 @@ class Animals extends Component {
 							<div className="card-social">
 								<div className="likes-and-comments">
 									<div className="likes">
-										<img src={likeIcon} width="16" />
+										<img src={likeIcon} width="20" alt="like" />
 										<span>{size(animal.likes)}</span>
 									</div>
 									<div className="comments">
-										<img src={commentIcon} width="16" />
+										<img src={commentIcon} width="20" alt="comment" />
 										<span>{size(animal.comments)}</span>
 									</div>
 								</div>
 								<div className="share">
-									<img src={shareIcon} width="16" />
+									<img src={shareIcon} width="16" alt="share" />
 									Zdielat
-								</div>
-								{/* Lightbox galeria */}
-								{/* TODO: NEfunguje posuva ine obrazky ako by mal */}
-								<div>
-									<button
-										type="button"
-										onClick={() => this.setState({ animalID: get(animal, 'id'), isOpen: true })}
-									>
-										Open Lightbox
-									</button>
-
-									{isOpen && (
-										<Lightbox
-											mainSrc={animalGallery && animalGallery[photoIndex]}
-											nextSrc={animalGallery[(photoIndex + 1) % animalGallery.length]}
-											prevSrc={
-												animalGallery[
-													(photoIndex + animalGallery.length - 1) % animalGallery.length
-												]
-											}
-											onCloseRequest={() => this.setState({ isOpen: false })}
-											onMovePrevRequest={() =>
-												this.setState({
-													photoIndex:
-														(photoIndex + animalGallery.length - 1) % animalGallery.length
-												})}
-											onMoveNextRequest={() =>
-												this.setState({
-													photoIndex: (photoIndex + 1) % animalGallery.length
-												})}
-										/>
-									)}
 								</div>
 							</div>
 							{/* Presmerovanie */}
@@ -225,7 +172,6 @@ class Animals extends Component {
 			>
 				<div className="animals-wrapper">
 					<AnimalItems />
-					
 				</div>
 			</Animated>
 		)

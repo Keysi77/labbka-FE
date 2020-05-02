@@ -24,7 +24,7 @@ const SheltersPage = (props) => {
 	// const { t } = useTranslation();
 	useEffect(() => {
 		fetchShelters()
-	}, [])
+	}, [fetchShelters])
 
 	console.log('shelters', shelters)
 
@@ -37,7 +37,7 @@ const SheltersPage = (props) => {
 		<div className="shelters-wrapper">
 			{map(shelters, (shelter) => {
 				return (
-					<div className="col-xl-6 col-lg-12">
+					<div key={shelter.id} className="col-xl-6 col-lg-12">
 						<div key={shelter.id} className="shelter-item">
 							<div className="shelter-name">{get(shelter, 'name')}</div>
 							<div className="shelter-cover">
@@ -48,7 +48,7 @@ const SheltersPage = (props) => {
 								</Link>
 								<img className="cover" src={shelter.cover} alt="utulok" />
 								<div className="location">
-									<img src={locationIcon} width="16" />
+									<img src={locationIcon} width="16" alt="location" />
 									<span>{shelter.address.city}</span>
 								</div>
 							</div>

@@ -25,6 +25,17 @@ a
 	text-decoration: none
 	color: black
 
+h1
+	font-size: 18px
+	font-weight: bold
+
+h2
+	font-size: 16px
+	font-weight: bold
+h3
+	font-sie: 14px
+	font-weight: 500
+	
 button:focus
 	outline: none
 
@@ -68,7 +79,13 @@ body
 // MOBILE / TABLET GENERAL
 // Pri 992px zrusit margin-left
 @media screen and (max-width: 992px)
-	.site-layout
-		// margin-left: 0 !important
+	.layout-wrapper
+		.ant-layout.ant-layout-has-sider
+			.site-layout
+				margin-left: 0 !important
 	.site-layout-background
 		padding: 0 !important
+	.ant-layout-header
+		margin: 0 !important
+	.ant-layout-footer
+		margin: 0 !important

@@ -10,18 +10,19 @@ import { plemenoIcon, cakeIcon, genderIcon, sizeIcon, weightIcon, loyaltyIcon } 
 
 // import ReactMapGL, { Marker, Popup } from "react-map-gl";
 
-import { formatSize } from '../../utils/animalTextFormatters'
+import { formatSize } from '../../utils/helper'
 
 // Components
 import LightboxGallery from '../../components/LightboxGallery'
 import AnimalInfoItem from './components/AnimalInfoItem'
 
 import './AnimalDetailPage.sass'
+import Map from '../../components/LocationMap'
 
 class AnimalDetailPage extends Component {
 	static propTypes = {
 		animal: PropTypes.shape
-	};
+	}
 
 	state = {
 		isOpen: false,
@@ -36,7 +37,7 @@ class AnimalDetailPage extends Component {
 
 	render() {
 		const { animal } = this.props
-
+		console.log('ssdfsf', get(animal.location, 'coordinates[0]'))
 		function info() {
 			// TODO: sprvit kontent pre modal a odpratat do osbitneho comonentu
 			Modal.info({
@@ -106,7 +107,7 @@ class AnimalDetailPage extends Component {
 						</Col>
 					</Row>
 
-					<Row>
+					<Row style={{ marginBottom: '30px' }}>
 						<Col
 							className="poster-wrapper"
 							// sm={24}
@@ -118,7 +119,7 @@ class AnimalDetailPage extends Component {
 									<Avatar
 										className="avatar"
 										shape="square"
-										size={52}
+										size={42}
 										src={get(animal, 'userRef.avatar')}
 									/>
 								</div>
@@ -199,7 +200,10 @@ class AnimalDetailPage extends Component {
 							<div className="email">jdfskjdf@gmail.com</div>
 						</div>
 					</div>
-
+					<Map
+						long={animal.location && get(animal.location, 'coordinates[0]')}
+						lat={animal.location && get(animal.location, 'coordinates[1]')}
+					/>
 					<div>
 						{/* TODO: neda sa galeria otvorit po prvom zatvoreni hned na to druhy krat */}
 						{isOpen && <LightboxGallery visible={true} gallery={gallery} />}

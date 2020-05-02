@@ -17,7 +17,7 @@ const AnimalsPage = ({ fetchAnimals, animals }) => {
 	}
 	useEffect(() => {
 		fetchAnimals()
-	}, [])
+	}, [fetchAnimals])
 
 	return <AnimalItem animals={animals} />
 }

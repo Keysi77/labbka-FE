@@ -37,7 +37,7 @@ const HomePage = (props) => {
 		width: '100%',
 		height: '500px'
 	})
-
+	// TODO: fetchnut statistiky endpoint ked Palo spravi
 	useEffect(() => {
 		const listener = (e) => {
 			if (e.key === 'Escape') {
@@ -50,7 +50,7 @@ const HomePage = (props) => {
 		return () => {
 			window.removeEventListener('keydown', listener)
 		}
-	}, [])
+	}, [fetchShelters])
 
 	if (!token) {
 		history.push('/prihlasenie')

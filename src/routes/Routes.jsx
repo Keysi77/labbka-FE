@@ -28,7 +28,7 @@ const Routes = ({ t }) => {
 	return (
 		<Switch>
 			<PublicRoute path={'/'} component={Home} layout={Layout} exact />
-			<PublicRoute exact path={'/zvieratka-na-adopciu'} component={Animals} layout={Layout} />
+			<PublicRoute path={'/zvieratka-na-adopciu'} component={Animals} layout={Layout} exact />
 			<PublicRoute path={'/utulky'} component={Shelters} layout={Layout} exact />
 			<PublicRoute path={'/utulok/:shelterId'} component={ShelterDetail} layout={Layout} exact />
 			<PublicRoute path={'/detail-zvieratka/:animalId'} component={AnimalDetailPage} layout={Layout} exact />

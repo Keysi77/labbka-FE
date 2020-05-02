@@ -6,7 +6,6 @@ import ReactMapGL, { Marker } from 'react-map-gl'
 const LocationMap = (props) => {
 	const { long, lat } = props
 
-	console.log('props', props)
 	const [ viewPort, setViewPort ] = useState({
 		// Banska Bystrica -> stred Slovensko
 		latitude: 48.736279,

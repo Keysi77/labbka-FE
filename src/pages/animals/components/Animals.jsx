@@ -14,7 +14,7 @@ import buildFormatter from 'react-timeago/lib/formatters/buildFormatter'
 // import { FacebookShareButton } from "react-share";
 
 // Antd
-import { Avatar, Spin } from 'antd'
+import { Avatar } from 'antd'
 
 // icons
 import {
@@ -60,7 +60,7 @@ class Animals extends Component {
 			// TODO: opravit preblikavanie galerie
 			// const animalGallery = get(find(animals, (animal) => animal.id === this.state.animalID), 'gallery')
 
-			return animals ? (
+			return (
 				map(animals, (animal) => {
 					return (
 						<div key={animal.id} className="card-wrapper">
@@ -157,8 +157,6 @@ class Animals extends Component {
 						</div>
 					)
 				})
-			) : (
-				<Spin />
 			)
 		}
 

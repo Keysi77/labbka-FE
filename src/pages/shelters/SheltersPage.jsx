@@ -26,10 +26,8 @@ const SheltersPage = (props) => {
 		fetchShelters()
 	}, [fetchShelters])
 
-	console.log('shelters', shelters)
 
 	const handleShelterDetail = (id) => {
-		console.log('id', id)
 		fetchOneShelter(id)
 	}
 

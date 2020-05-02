@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 // logger pre debugovanie middlewaru
 import logger from 'redux-logger'
 // redux-thunk = spusta funkcie v akciach
@@ -10,7 +10,10 @@ import { persistStore } from 'redux-persist'
 
 const middlewares = [ logger, thunk ]
 
-export const store = createStore(rootReducer, applyMiddleware(...middlewares))
+// Support pre store v DEV Toole v REDUXE
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
+export const store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlewares)))
 export const persistor = persistStore(store)
 
 export default { store, persistor }

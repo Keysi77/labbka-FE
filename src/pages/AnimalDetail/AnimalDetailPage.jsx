@@ -37,7 +37,6 @@ class AnimalDetailPage extends Component {
 
 	render() {
 		const { animal } = this.props
-		console.log('ssdfsf', get(animal.location, 'coordinates[0]'))
 		function info() {
 			// TODO: sprvit kontent pre modal a odpratat do osbitneho comonentu
 			Modal.info({

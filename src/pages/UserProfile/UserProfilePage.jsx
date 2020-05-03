@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect'
 import { get } from 'lodash'
 import PropTypes from 'prop-types'
 
+import './UserProfilePage.sass'
+
 const ProfilePage = (props) => {
 	const { loggedUser } = props
 	return (

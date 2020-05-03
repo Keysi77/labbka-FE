@@ -1,3 +1,11 @@
 {
-	"adopcia": "/zvieratka-na-adopciu"
+  "detail-zvieratka/{{animalId}}": "/detail-zvieratka/{{animalId}}",
+  "index": "/",
+  "pribehy": "/pribehy",
+  "prihlasenie": "/prihlasenie",
+  "profil/{{userId}}": "/profil/{{userId}}",
+  "stratene-zvieratka": "/stratene-zvieratka",
+  "utulky": "/utulky",
+  "utulok/{{shelterId}}": "/utulok/{{shelterId}}",
+  "zvieratka-na-adopciu": "/zvieratka-na-adopciu"
 }

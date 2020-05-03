@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect'
 import { selectOneAnimal } from '../../redux/animals/animals.selectors'
 import { get, map } from 'lodash'
 import { Avatar, Row, Col, Modal, Button } from 'antd'
+import { withTranslation } from 'react-i18next'
+import { compose } from 'redux'
 
 import { plemenoIcon, cakeIcon, genderIcon, sizeIcon, weightIcon, loyaltyIcon } from '../../utils/icons'
 
@@ -36,7 +38,7 @@ class AnimalDetailPage extends Component {
 	}
 
 	render() {
-		const { animal } = this.props
+		const { animal, t } = this.props
 		function info() {
 			// TODO: sprvit kontent pre modal a odpratat do osbitneho comonentu
 			Modal.info({
@@ -112,7 +114,9 @@ class AnimalDetailPage extends Component {
 							// sm={24}
 							lg={6}
 						>
-							<h1> ZVEREJNIL </h1>
+							<h1> {t('pages:AnimalDetailPage.Zverejnil6')} </h1>
+							<h1> {t('pages:AnimalDetailPage.fsdf')} </h1>
+
 							<Row height={350}>
 								<div className="avatar">
 									<Avatar
@@ -189,7 +193,7 @@ class AnimalDetailPage extends Component {
 				</div>
 				<div className="right-wrapper">
 					<div className="shelter-wrapper box-shadow">
-						<div className="shelter-avatar">
+						{/* <div className="shelter-avatar">
 							<Avatar className="avatar" size={92} src={shelterAvatar} />
 						</div>
 						<div className="shelter-name">{get(animal.ownerInfo, 'address.city')}</div>
@@ -197,7 +201,7 @@ class AnimalDetailPage extends Component {
 						<div className="shelter-info">
 							<div className="phone">0902 258 687</div>
 							<div className="email">jdfskjdf@gmail.com</div>
-						</div>
+						</div> */}
 					</div>
 					<Map
 						long={animal.location && get(animal.location, 'coordinates[0]')}
@@ -217,4 +221,4 @@ const mapStateToProps = createStructuredSelector({
 	animal: selectOneAnimal
 })
 
-export default connect(mapStateToProps)(AnimalDetailPage)
+export default compose(connect(mapStateToProps), withTranslation())(AnimalDetailPage)

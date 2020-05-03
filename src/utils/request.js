@@ -23,7 +23,7 @@ export const getReq = async (url, params, customConfig = {}) => {
 		const res = await axios.get(url, config)
 		return res
 	} catch (e) {
-		console.log(e)
+		return e
 	}
 }
 

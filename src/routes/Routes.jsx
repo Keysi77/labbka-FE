@@ -45,13 +45,13 @@ const Routes = ({ t }) => {
 				exact
 			/>
 			<PublicRoute
-				path={t("paths:utulok/{{shelterId}}")}
+				path={t("paths:utulok/{{shelterId}}", { shelterId: ':shelterId' })}
 				component={ShelterDetailPage}
 				layout={Layout}
 				exact
 			/>
 			<PublicRoute
-				path={t("paths:detail-zvieratka/{{animalId}}")}
+				path={t("paths:detail-zvieratka/{{animalId}}", { animalId: ':animalId' })}
 				component={AnimalDetailPage}
 				layout={Layout}
 				exact
@@ -69,7 +69,7 @@ const Routes = ({ t }) => {
 				exact
 			/>
 			<PublicRoute
-				path={t("paths:profil/{{userId}}")}
+				path={t("paths:profil/{{userId}}", { userId: ':userId' })}
 				component={UserProfilePage}
 				layout={Layout}
 				exact

@@ -19,11 +19,12 @@ import LightboxGallery from '../../components/LightboxGallery'
 import AnimalInfoItem from './components/AnimalInfoItem'
 
 import './AnimalDetailPage.sass'
-import Map from '../../components/LocationMap'
+import LocationMap from '../../components/LocationMap'
 
 class AnimalDetailPage extends Component {
 	static propTypes = {
-		animal: PropTypes.shape
+		animal: PropTypes.shape(),
+		t: PropTypes.func
 	}
 
 	state = {
@@ -114,9 +115,7 @@ class AnimalDetailPage extends Component {
 							// sm={24}
 							lg={6}
 						>
-							<h1> {t('pages:AnimalDetailPage.Zverejnil6')} </h1>
-							<h1> {t('pages:AnimalDetailPage.fsdf')} </h1>
-
+							<h1> {t('pages:AnimalDetailPage.Zverejnil')} </h1>
 							<Row height={350}>
 								<div className="avatar">
 									<Avatar
@@ -192,8 +191,8 @@ class AnimalDetailPage extends Component {
 					</Row>
 				</div>
 				<div className="right-wrapper">
-					<div className="shelter-wrapper box-shadow">
-						{/* <div className="shelter-avatar">
+					<div className="shelter-wrapper">
+						<div className="shelter-avatar">
 							<Avatar className="avatar" size={92} src={shelterAvatar} />
 						</div>
 						<div className="shelter-name">{get(animal.ownerInfo, 'address.city')}</div>
@@ -201,12 +200,14 @@ class AnimalDetailPage extends Component {
 						<div className="shelter-info">
 							<div className="phone">0902 258 687</div>
 							<div className="email">jdfskjdf@gmail.com</div>
-						</div> */}
+						</div>
 					</div>
-					<Map
-						long={animal.location && get(animal.location, 'coordinates[0]')}
-						lat={animal.location && get(animal.location, 'coordinates[1]')}
-					/>
+					<div className="map-wrapper">
+						<LocationMap
+							long={animal.location && get(animal.location, 'coordinates[0]')}
+							lat={animal.location && get(animal.location, 'coordinates[1]')}
+						/>
+					</div>
 					<div>
 						{/* TODO: neda sa galeria otvorit po prvom zatvoreni hned na to druhy krat */}
 						{isOpen && <LightboxGallery visible={true} gallery={gallery} />}

@@ -22,7 +22,7 @@ export const loginUser = (loginData) => {
 			setAccessToken(data.bearer)
 			history.push('/zvieratka-na-adopciu')
 		} catch (error) {
-			console.log('error', error)
+			return error
 		}
 	}
 }
